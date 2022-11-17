@@ -1,0 +1,2033 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:versionCode="21" android:versionName="3.3.1" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" package="io.appium.android.apis" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="29"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <instrumentation android:label="Local Sample" android:name="p004io.appium.android.apis.app.LocalSampleInstrumentation" android:targetPackage="io.appium.android.apis"/>
+    <application android:label="@string/activity_sample_code" android:icon="@drawable/app_sample_code" android:name="p004io.appium.android.apis.ApiDemosApplication" android:debuggable="true" android:allowBackup="false" android:hardwareAccelerated="true" android:supportsRtl="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+        <uses-library android:name="com.example.will.never.exist" android:required="false"/>
+        <activity android:name="p004io.appium.android.apis.ApiDemos">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_hello_world" android:name="p004io.appium.android.apis.app.HelloWorld">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Holo.Dialog" android:label="@string/activity_dialog" android:name="p004io.appium.android.apis.app.DialogActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.CustomDialog" android:label="@string/activity_custom_dialog" android:name="p004io.appium.android.apis.app.CustomDialogActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/quick_contacts_demo" android:name="p004io.appium.android.apis.app.QuickContactsDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Wallpaper" android:label="@string/activity_wallpaper" android:name="p004io.appium.android.apis.app.WallpaperActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Translucent" android:label="@string/activity_translucent" android:name="p004io.appium.android.apis.app.TranslucentActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Transparent" android:label="@string/activity_translucent_blur" android:name="p004io.appium.android.apis.app.TranslucentBlurActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_animation" android:name="p004io.appium.android.apis.app.Animation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_save_restore" android:name="p004io.appium.android.apis.app.SaveRestoreState" android:windowSoftInputMode="adjustUnspecified|stateVisible|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_persistent" android:name="p004io.appium.android.apis.app.PersistentState" android:windowSoftInputMode="adjustUnspecified|stateVisible|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_recreate" android:name="p004io.appium.android.apis.app.ActivityRecreate" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_finish_affinity" android:name="p004io.appium.android.apis.app.FinishAffinity" android:enabled="@bool/atLeastJellyBean" android:taskAffinity=":finishing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/soft_input_modes" android:name="p004io.appium.android.apis.app.SoftInputModes">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_receive_result" android:name="p004io.appium.android.apis.app.ReceiveResult">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/ThemeDialogWhenLarge" android:name="p004io.appium.android.apis.app.SendResult"/>
+        <activity android:label="@string/activity_forwarding" android:name="p004io.appium.android.apis.app.Forwarding">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="p004io.appium.android.apis.app.ForwardTarget"/>
+        <activity android:label="@string/activity_redirect" android:name="p004io.appium.android.apis.app.RedirectEnter">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="p004io.appium.android.apis.app.RedirectMain"/>
+        <activity android:name="p004io.appium.android.apis.app.RedirectGetter"/>
+        <activity android:theme="@style/Theme" android:label="@string/activity_custom_title" android:name="p004io.appium.android.apis.app.CustomTitle" android:windowSoftInputMode="adjustUnspecified|stateVisible|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_reorder" android:name="p004io.appium.android.apis.app.ReorderOnLaunch">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="p004io.appium.android.apis.app.ReorderTwo"/>
+        <activity android:name="p004io.appium.android.apis.app.ReorderThree"/>
+        <activity android:name="p004io.appium.android.apis.app.ReorderFour"/>
+        <activity android:label="@string/activity_setwallpaper" android:name="p004io.appium.android.apis.app.SetWallpaperActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_screen_orientation" android:name="p004io.appium.android.apis.app.ScreenOrientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_presentation" android:name="p004io.appium.android.apis.app.PresentationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_presentation_with_media_router" android:name="p004io.appium.android.apis.app.PresentationWithMediaRouterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_secure_window" android:name="p004io.appium.android.apis.app.SecureWindowActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_secure_dialog" android:name="p004io.appium.android.apis.app.SecureDialogActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_secure_surface_view" android:name="p004io.appium.android.apis.app.SecureSurfaceViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_alert_dialog" android:name="p004io.appium.android.apis.app.FragmentAlertDialog" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_arguments" android:name="p004io.appium.android.apis.app.FragmentArguments" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_custom_animations" android:name="p004io.appium.android.apis.app.FragmentCustomAnimations" android:enabled="@bool/atLeastHoneycombMR2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_hide_show" android:name="p004io.appium.android.apis.app.FragmentHideShow" android:enabled="@bool/atLeastHoneycomb" android:windowSoftInputMode="stateUnchanged">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_context_menu" android:name="p004io.appium.android.apis.app.FragmentContextMenu" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_dialog" android:name="p004io.appium.android.apis.app.FragmentDialog" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_dialog_or_activity" android:name="p004io.appium.android.apis.app.FragmentDialogOrActivity" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_layout" android:name="p004io.appium.android.apis.app.FragmentLayout" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="io.appium.android.apis.app.FragmentLayout$DetailsActivity" android:enabled="@bool/atLeastHoneycomb"/>
+        <activity android:label="@string/fragment_list_array" android:name="p004io.appium.android.apis.app.FragmentListArray" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_menu" android:name="p004io.appium.android.apis.app.FragmentMenu" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_nesting_tabs" android:name="p004io.appium.android.apis.app.FragmentNestingTabs" android:enabled="@bool/atLeastJellyBeanMR1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_retain_instance" android:name="p004io.appium.android.apis.app.FragmentRetainInstance" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_receive_result" android:name="p004io.appium.android.apis.app.FragmentReceiveResult" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_stack" android:name="p004io.appium.android.apis.app.FragmentStack" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/fragment_tabs" android:name="p004io.appium.android.apis.app.FragmentTabs" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/loader_cursor" android:name="p004io.appium.android.apis.app.LoaderCursor" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/loader_custom" android:name="p004io.appium.android.apis.app.LoaderCustom" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/loader_throttle" android:name="p004io.appium.android.apis.app.LoaderThrottle" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <provider android:name="io.appium.android.apis.app.LoaderThrottle$SimpleProvider" android:enabled="@bool/atLeastHoneycomb" android:authorities="io.appium.android.apis.app.LoaderThrottle"/>
+        <activity android:label="@string/loader_retained" android:name="p004io.appium.android.apis.app.LoaderRetained" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_intents" android:name="p004io.appium.android.apis.app.Intents">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_intent_activity_flags" android:name="p004io.appium.android.apis.app.IntentActivityFlags">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:name="p004io.appium.android.apis.app.LocalService" android:stopWithTask="true"/>
+        <activity android:label="@string/activity_local_service_controller" android:name="io.appium.android.apis.app.LocalServiceActivities$Controller" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_local_service_binding" android:name="io.appium.android.apis.app.LocalServiceActivities$Binding">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:name="p004io.appium.android.apis.app.MessengerService" android:process=":remote"/>
+        <activity android:label="@string/activity_messenger_service_binding" android:name="io.appium.android.apis.app.MessengerServiceActivities$Binding">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:name="p004io.appium.android.apis.app.RemoteService" android:process=":remote">
+            <intent-filter>
+                <action android:name="p004io.appium.android.apis.app.IRemoteService"/>
+                <action android:name="p004io.appium.android.apis.app.ISecondary"/>
+                <action android:name="io.appium.android.apis.app.REMOTE_SERVICE"/>
+            </intent-filter>
+        </service>
+        <activity android:label="@string/activity_remote_service_controller" android:name="io.appium.android.apis.app.RemoteService$Controller" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_remote_service_binding" android:name="io.appium.android.apis.app.RemoteService$Binding">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_remote_service_binding_options" android:name="io.appium.android.apis.app.RemoteService$BindingOptions">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:name="p004io.appium.android.apis.app.ServiceStartArguments"/>
+        <activity android:label="@string/activity_service_start_arguments_controller" android:name="io.appium.android.apis.app.ServiceStartArguments$Controller" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:name="p004io.appium.android.apis.app.ForegroundService"/>
+        <activity android:label="@string/activity_foreground_service_controller" android:name="io.appium.android.apis.app.ForegroundService$Controller" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_isolated_service_controller" android:name="io.appium.android.apis.app.IsolatedService$Controller" android:enabled="@bool/atLeastJellyBean" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:name="p004io.appium.android.apis.app.IsolatedService" android:enabled="@bool/atLeastJellyBean" android:isolatedProcess="true"/>
+        <service android:name="p004io.appium.android.apis.app.IsolatedService2" android:enabled="@bool/atLeastJellyBean" android:isolatedProcess="true"/>
+        <receiver android:name="p004io.appium.android.apis.app.OneShotAlarm" android:process=":remote"/>
+        <receiver android:name="p004io.appium.android.apis.app.RepeatingAlarm" android:process=":remote"/>
+        <activity android:label="@string/activity_alarm_controller" android:name="p004io.appium.android.apis.app.AlarmController">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:name="p004io.appium.android.apis.app.AlarmService_Service" android:process=":remote"/>
+        <activity android:label="@string/activity_alarm_service" android:name="p004io.appium.android.apis.app.AlarmService">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/accessibility_service" android:name="p004io.appium.android.apis.accessibility.ClockBackActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:label="@string/accessibility_service_label" android:name="p004io.appium.android.apis.accessibility.ClockBackService" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+        </service>
+        <activity android:label="@string/accessibility_query_window" android:name="p004io.appium.android.apis.accessibility.TaskListActivity" android:enabled="@bool/atLeastIceCreamSandwich">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:label="@string/accessibility_query_window_label" android:name="p004io.appium.android.apis.accessibility.TaskBackService" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" android:enabled="@bool/atLeastIceCreamSandwich">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice" android:resource="@xml/taskbackconfig"/>
+        </service>
+        <activity android:label="@string/accessibility_custom_view" android:name="p004io.appium.android.apis.accessibility.CustomViewAccessibilityActivity" android:enabled="@bool/atLeastIceCreamSandwich">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_local_sample" android:name="p004io.appium.android.apis.app.LocalSample">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_contacts_filter" android:name="p004io.appium.android.apis.app.ContactsFilter">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="App/Notification/NotifyWithText" android:name="p004io.appium.android.apis.app.NotifyWithText">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="App/Notification/IncomingMessage" android:name="p004io.appium.android.apis.app.IncomingMessage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="App/Notification/IncomingMessageView" android:name="p004io.appium.android.apis.app.IncomingMessageView"/>
+        <activity android:theme="@style/ThemeHoloDialog" android:label="You have messages" android:name="p004io.appium.android.apis.app.IncomingMessageInterstitial" android:taskAffinity="" android:excludeFromRecents="true" android:launchMode="singleTask"/>
+        <activity android:theme="@style/Theme.Transparent" android:name="p004io.appium.android.apis.app.NotificationDisplay" android:taskAffinity="" android:excludeFromRecents="true" android:noHistory="true"/>
+        <activity android:label="App/Notification/Status Bar" android:name="p004io.appium.android.apis.app.StatusBarNotifications" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <service android:name="p004io.appium.android.apis.app.NotifyingService"/>
+        <activity android:label="App/Notification/Notifying Service Controller" android:name="p004io.appium.android.apis.app.NotifyingController">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_alert_dialog" android:name="p004io.appium.android.apis.app.AlertDialogSamples">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/search_invoke" android:name="p004io.appium.android.apis.app.SearchInvoke">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+            <meta-data android:name="android.app.default_searchable" android:value=".app.SearchQueryResults"/>
+        </activity>
+        <activity android:label="@string/search_query_results" android:name="p004io.appium.android.apis.app.SearchQueryResults">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <provider android:name="p004io.appium.android.apis.app.SearchSuggestionSampleProvider" android:authorities="io.appium.android.apis.SuggestionProvider"/>
+        <activity android:label="@string/shortcuts" android:name="p004io.appium.android.apis.app.LauncherShortcuts">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/sample_shortcuts" android:name="io.appium.android.apis.app.CreateShortcuts" android:targetActivity="io.appium.android.apis.app.LauncherShortcuts">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:label="@string/menu_from_xml_title" android:name="p004io.appium.android.apis.app.MenuInflateFromXml">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_sample_device_admin" android:name="p004io.appium.android.apis.app.DeviceAdminSample">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <receiver android:label="@string/sample_device_admin" android:name="io.appium.android.apis.app.DeviceAdminSample$DeviceAdminSampleReceiver" android:permission="android.permission.BIND_DEVICE_ADMIN" android:description="@string/sample_device_admin_description">
+            <meta-data android:name="android.app.device_admin" android:resource="@xml/device_admin_sample"/>
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:label="@string/voice_recognition" android:name="p004io.appium.android.apis.app.VoiceRecognition">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/text_to_speech" android:name="p004io.appium.android.apis.app.TextToSpeechActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/action_bar_mechanics" android:name="p004io.appium.android.apis.app.ActionBarMechanics" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/action_bar_usage" android:name="p004io.appium.android.apis.app.ActionBarUsage" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/action_bar_display_options" android:name="p004io.appium.android.apis.app.ActionBarDisplayOptions" android:enabled="@bool/atLeastHoneycomb" android:logo="@drawable/apidemo_androidlogo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/action_bar_tabs" android:name="p004io.appium.android.apis.app.ActionBarTabs" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/action_bar_settings_action_provider" android:name="p004io.appium.android.apis.app.ActionBarSettingsActionProviderActivity" android:enabled="@bool/atLeastIceCreamSandwich">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/action_bar_share_action_provider" android:name="p004io.appium.android.apis.app.ActionBarShareActionProviderActivity" android:enabled="@bool/atLeastIceCreamSandwich">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/accessibility_node_provider" android:name="p004io.appium.android.apis.accessibility.AccessibilityNodeProviderActivity" android:enabled="@bool/atLeastIceCreamSandwich">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="p004io.appium.android.apis.app.AppUpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:label="@string/fragment_preferences" android:name="p004io.appium.android.apis.preference.FragmentPreferences" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/preference_with_headers" android:name="p004io.appium.android.apis.preference.PreferenceWithHeaders" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/preferences_from_xml" android:name="p004io.appium.android.apis.preference.PreferencesFromXml">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/preferences_from_code" android:name="p004io.appium.android.apis.preference.PreferencesFromCode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/advanced_preferences" android:name="p004io.appium.android.apis.preference.AdvancedPreferences">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/launching_preferences" android:name="p004io.appium.android.apis.preference.LaunchingPreferences">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/preference_dependencies" android:name="p004io.appium.android.apis.preference.PreferenceDependencies">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/default_values" android:name="p004io.appium.android.apis.preference.DefaultValues">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/switch_preference" android:name="p004io.appium.android.apis.preference.SwitchPreference" android:enabled="@bool/atLeastIceCreamSandwich">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_clipboard" android:name="p004io.appium.android.apis.content.ClipboardSample" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_external_storage" android:name="p004io.appium.android.apis.content.ExternalStorage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+                <category android:name="android.intent.category.EMBED"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_styled_text" android:name="p004io.appium.android.apis.content.StyledText">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+                <category android:name="android.intent.category.EMBED"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_resources_layout_reference" android:name="p004io.appium.android.apis.content.ResourcesLayoutReference">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+                <category android:name="android.intent.category.EMBED"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_resources_width_and_height" android:name="p004io.appium.android.apis.content.ResourcesWidthAndHeight" android:enabled="@bool/atLeastHoneycombMR2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+                <category android:name="android.intent.category.EMBED"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_resources_smallest_width" android:name="p004io.appium.android.apis.content.ResourcesSmallestWidth" android:enabled="@bool/atLeastHoneycombMR2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+                <category android:name="android.intent.category.EMBED"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_read_asset" android:name="p004io.appium.android.apis.content.ReadAsset">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+                <category android:name="android.intent.category.EMBED"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_resources" android:name="p004io.appium.android.apis.content.ResourcesSample">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_pick_contact" android:name="p004io.appium.android.apis.content.PickContact">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/activity_install_apk" android:name="p004io.appium.android.apis.content.InstallApk" android:enabled="@bool/atLeastHoneycombMR2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <provider android:name="p004io.appium.android.apis.content.FileProvider" android:enabled="@bool/atLeastHoneycombMR2" android:authorities="io.appium.android.apis.content.FileProvider"/>
+        <activity android:label="OS/Morse Code" android:name="p004io.appium.android.apis.p005os.MorseCode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="OS/Sensors" android:name="p004io.appium.android.apis.p005os.Sensors">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="OS/Rotation Vector" android:name="p004io.appium.android.apis.p005os.RotationVectorDemo" android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="OS/SMS Messaging" android:name="p004io.appium.android.apis.p005os.SmsMessagingDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="p004io.appium.android.apis.p005os.SmsReceivedDialog" android:launchMode="singleInstance"/>
+        <receiver android:name="p004io.appium.android.apis.p005os.SmsMessageReceiver" android:enabled="false">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:label="Animation/Loading" android:name="p004io.appium.android.apis.animation.AnimationLoading" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Cloning" android:name="p004io.appium.android.apis.animation.AnimationCloning" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Seeking" android:name="p004io.appium.android.apis.animation.AnimationSeeking" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Events" android:name="p004io.appium.android.apis.animation.AnimatorEvents" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Bouncing Balls" android:name="p004io.appium.android.apis.animation.BouncingBalls" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Custom Evaluator" android:name="p004io.appium.android.apis.animation.CustomEvaluator" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/View Flip" android:name="p004io.appium.android.apis.animation.ListFlipper" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Reversing" android:name="p004io.appium.android.apis.animation.ReversingAnimation" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Multiple Properties" android:name="p004io.appium.android.apis.animation.MultiPropertyAnimation" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Layout Animations" android:name="p004io.appium.android.apis.animation.LayoutAnimations" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Hide-Show Animations" android:name="p004io.appium.android.apis.animation.LayoutAnimationsHideShow" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Animation/Default Layout Animations" android:name="p004io.appium.android.apis.animation.LayoutAnimationsByDefault" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Animation/3D Transition" android:name="p004io.appium.android.apis.animation.Transition3d">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/TextClock" android:name="p004io.appium.android.apis.view.TextClockDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Chronometer" android:name="p004io.appium.android.apis.view.ChronometerDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/WebView" android:name="p004io.appium.android.apis.view.WebView1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/WebView2" android:name="p004io.appium.android.apis.view.WebView2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/WebView3" android:name="p004io.appium.android.apis.view.WebView3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/RelativeLayout/1. Vertical" android:name="p004io.appium.android.apis.view.RelativeLayout1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/RelativeLayout/2. Simple Form" android:name="p004io.appium.android.apis.view.RelativeLayout2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/1. Vertical" android:name="p004io.appium.android.apis.view.LinearLayout1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/2. Vertical (Fill Screen)" android:name="p004io.appium.android.apis.view.LinearLayout2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/3. Vertical (Padded)" android:name="p004io.appium.android.apis.view.LinearLayout3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/4. Horizontal" android:name="p004io.appium.android.apis.view.LinearLayout4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/5. Simple Form" android:name="p004io.appium.android.apis.view.LinearLayout5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/6. Uniform Size" android:name="p004io.appium.android.apis.view.LinearLayout6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/7. Fill Parent" android:name="p004io.appium.android.apis.view.LinearLayout7">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/8. Gravity" android:name="p004io.appium.android.apis.view.LinearLayout8">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/9. Layout Weight" android:name="p004io.appium.android.apis.view.LinearLayout9">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/LinearLayout/10. Background Image" android:name="p004io.appium.android.apis.view.LinearLayout10">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Radio Group" android:name="p004io.appium.android.apis.view.RadioGroup1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/ScrollView/1. Short" android:name="p004io.appium.android.apis.view.ScrollView1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/ScrollView/2. Long" android:name="p004io.appium.android.apis.view.ScrollView2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/HorizontalScrollView" android:name="p004io.appium.android.apis.view.HorizontalScrollView1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Tabs/1. Content By Id" android:name="p004io.appium.android.apis.view.Tabs1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Tabs/2. Content By Factory" android:name="p004io.appium.android.apis.view.Tabs2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Tabs/3. Content By Intent" android:name="p004io.appium.android.apis.view.Tabs3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme" android:label="Views/Tabs/4. Non Holo theme" android:name="p004io.appium.android.apis.view.Tabs4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Tabs/5. Scrollable" android:name="p004io.appium.android.apis.view.Tabs5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Tabs/6. Right aligned" android:name="p004io.appium.android.apis.view.Tabs6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/ScrollView/3. Internal Selection" android:name="p004io.appium.android.apis.view.InternalSelectionScroll">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/01. Basic" android:name="p004io.appium.android.apis.view.TableLayout1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/02. Empty Cells" android:name="p004io.appium.android.apis.view.TableLayout2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/03. Long Content" android:name="p004io.appium.android.apis.view.TableLayout3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/04. Stretchable" android:name="p004io.appium.android.apis.view.TableLayout4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/05. Spanning and Stretchable" android:name="p004io.appium.android.apis.view.TableLayout5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/06. More Spanning and Stretchable" android:name="p004io.appium.android.apis.view.TableLayout6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/07. Column Collapse" android:name="p004io.appium.android.apis.view.TableLayout7">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/08. Toggle Stretch" android:name="p004io.appium.android.apis.view.TableLayout8">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/09. Toggle Shrink" android:name="p004io.appium.android.apis.view.TableLayout9">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/10. Simple Form" android:name="p004io.appium.android.apis.view.TableLayout10">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/11. Gravity" android:name="p004io.appium.android.apis.view.TableLayout11">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/TableLayout/12. Cell Spanning" android:name="p004io.appium.android.apis.view.TableLayout12">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/GridLayout/1. Simple Form" android:name="p004io.appium.android.apis.view.GridLayout1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/GridLayout/2. Form (XML)" android:name="p004io.appium.android.apis.view.GridLayout2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/GridLayout/3. Form (Java)" android:name="p004io.appium.android.apis.view.GridLayout3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/1. Top" android:name="p004io.appium.android.apis.view.Baseline1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/2. Bottom" android:name="p004io.appium.android.apis.view.Baseline2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/3. Center" android:name="p004io.appium.android.apis.view.Baseline3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/4. Everywhere" android:name="p004io.appium.android.apis.view.Baseline4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/5. Multi-line" android:name="p004io.appium.android.apis.view.Baseline6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/6. Relative" android:name="p004io.appium.android.apis.view.Baseline7">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/Nested Example 1" android:name="p004io.appium.android.apis.view.BaselineNested1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/Nested Example 2" android:name="p004io.appium.android.apis.view.BaselineNested2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layouts/Baseline/Nested Example 3" android:name="p004io.appium.android.apis.view.BaselineNested3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/ScrollBars/1. Basic" android:name="p004io.appium.android.apis.view.ScrollBar1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/ScrollBars/2. Fancy" android:name="p004io.appium.android.apis.view.ScrollBar2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/ScrollBars/3. Style" android:name="p004io.appium.android.apis.view.ScrollBar3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Visibility" android:name="p004io.appium.android.apis.view.Visibility1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/01. Array" android:name="p004io.appium.android.apis.view.List1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/02. Cursor (People)" android:name="p004io.appium.android.apis.view.List2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/03. Cursor (Phones)" android:name="p004io.appium.android.apis.view.List3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/04. ListAdapter" android:name="p004io.appium.android.apis.view.List4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/05. Separators" android:name="p004io.appium.android.apis.view.List5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/06. ListAdapter Collapsed" android:name="p004io.appium.android.apis.view.List6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/07. Cursor (Phones)" android:name="p004io.appium.android.apis.view.List7">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/08. Photos" android:name="p004io.appium.android.apis.view.List8">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/09. Array (Overlay)" android:name="p004io.appium.android.apis.view.List9">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/10. Single choice list" android:name="p004io.appium.android.apis.view.List10">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/11. Multiple choice list" android:name="p004io.appium.android.apis.view.List11">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/12. Transcript" android:name="p004io.appium.android.apis.view.List12">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/13. Slow Adapter" android:name="p004io.appium.android.apis.view.List13">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/14. Efficient Adapter" android:name="p004io.appium.android.apis.view.List14">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/15. Selection Mode" android:name="p004io.appium.android.apis.view.List15">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/16. Border selection mode" android:name="p004io.appium.android.apis.view.List16">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Lists/17. Activate items" android:name="p004io.appium.android.apis.view.List17">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Expandable Lists/1. Custom Adapter" android:name="p004io.appium.android.apis.view.ExpandableList1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Expandable Lists/2. Cursor (People)" android:name="p004io.appium.android.apis.view.ExpandableList2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Expandable Lists/3. Simple Adapter" android:name="p004io.appium.android.apis.view.ExpandableList3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Light" android:label="Views/Custom" android:name="p004io.appium.android.apis.view.CustomView1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Gallery/1. Photos" android:name="p004io.appium.android.apis.view.Gallery1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Gallery/2. People" android:name="p004io.appium.android.apis.view.Gallery2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Spinner" android:name="p004io.appium.android.apis.view.Spinner1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Grid/1. Icon Grid" android:name="p004io.appium.android.apis.view.Grid1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Grid/2. Photo Grid" android:name="p004io.appium.android.apis.view.Grid2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Grid/3. Selection Mode" android:name="p004io.appium.android.apis.view.Grid3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/ImageView" android:name="p004io.appium.android.apis.view.ImageView1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/ImageSwitcher" android:name="p004io.appium.android.apis.view.ImageSwitcher1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/TextSwitcher" android:name="p004io.appium.android.apis.view.TextSwitcher1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/ImageButton" android:name="p004io.appium.android.apis.view.ImageButton1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Animation/Shake" android:name="p004io.appium.android.apis.view.Animation1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Animation/Push" android:name="p004io.appium.android.apis.view.Animation2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Animation/Interpolators" android:name="p004io.appium.android.apis.view.Animation3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layout Animation/1. Grid Fade" android:name="p004io.appium.android.apis.view.LayoutAnimation1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layout Animation/2. List Cascade" android:name="p004io.appium.android.apis.view.LayoutAnimation2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layout Animation/3. Reverse Order" android:name="p004io.appium.android.apis.view.LayoutAnimation3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layout Animation/4. Randomize" android:name="p004io.appium.android.apis.view.LayoutAnimation4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layout Animation/5. Grid Direction" android:name="p004io.appium.android.apis.view.LayoutAnimation5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layout Animation/6. Wave Scale" android:name="p004io.appium.android.apis.view.LayoutAnimation6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Layout Animation/7. Nested Animations" android:name="p004io.appium.android.apis.view.LayoutAnimation7">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Light" android:label="Views/Controls/1. Light Theme" android:name="p004io.appium.android.apis.view.Controls1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme" android:label="Views/Controls/2. Dark Theme" android:name="p004io.appium.android.apis.view.Controls2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Holo.Light" android:label="Views/Controls/3. Holo Light Theme" android:name="p004io.appium.android.apis.view.Controls3" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Holo" android:label="Views/Controls/4. Holo Dark Theme" android:name="p004io.appium.android.apis.view.Controls4" android:enabled="@bool/atLeastHoneycomb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/CustomTheme" android:label="Views/Controls/5. Custom Theme" android:name="p004io.appium.android.apis.view.Controls5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/ThemeHolo" android:label="Views/Controls/6. Holo or Old Theme" android:name="p004io.appium.android.apis.view.Controls6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/TextFields" android:name="p004io.appium.android.apis.view.TextFields">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Buttons" android:name="p004io.appium.android.apis.view.Buttons1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Auto Complete/1. Screen Top" android:name="p004io.appium.android.apis.view.AutoComplete1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Auto Complete/2. Screen Bottom" android:name="p004io.appium.android.apis.view.AutoComplete2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Auto Complete/3. Scroll" android:name="p004io.appium.android.apis.view.AutoComplete3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Auto Complete/4. Contacts" android:name="p004io.appium.android.apis.view.AutoComplete4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Auto Complete/5. Contacts with Hint" android:name="p004io.appium.android.apis.view.AutoComplete5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Auto Complete/6. Multiple items" android:name="p004io.appium.android.apis.view.AutoComplete6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Progress Bar/1. Incremental" android:name="p004io.appium.android.apis.view.ProgressBar1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Progress Bar/2. Smooth" android:name="p004io.appium.android.apis.view.ProgressBar2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Progress Bar/3. Dialogs" android:name="p004io.appium.android.apis.view.ProgressBar3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Progress Bar/4. In Title Bar" android:name="p004io.appium.android.apis.view.ProgressBar4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Seek Bar" android:name="p004io.appium.android.apis.view.SeekBar1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Rating Bar" android:name="p004io.appium.android.apis.view.RatingBar1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Focus/1. Vertical" android:name="p004io.appium.android.apis.view.Focus1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Focus/2. Horizontal" android:name="p004io.appium.android.apis.view.Focus2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Focus/3. Circular" android:name="p004io.appium.android.apis.view.Focus3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Focus/4. Internal Selection" android:name="p004io.appium.android.apis.view.InternalSelectionFocus">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Focus/5. Sequential (Tab Order)" android:name="p004io.appium.android.apis.view.Focus5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Date Widgets/1. Dialog" android:name="p004io.appium.android.apis.view.DateWidgets1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Date Widgets/2. Inline" android:name="p004io.appium.android.apis.view.DateWidgets2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Popup Menu" android:name="p004io.appium.android.apis.view.PopupMenu1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Holo" android:label="Views/Search View/Action Bar" android:name="p004io.appium.android.apis.view.SearchViewActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+            <meta-data android:name="android.app.default_searchable" android:value=".app.SearchQueryResults"/>
+        </activity>
+        <activity android:theme="@style/Theme.Holo" android:label="Views/Search View/Always Expanded" android:name="p004io.appium.android.apis.view.SearchViewAlwaysVisible">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+            <meta-data android:name="android.app.default_searchable" android:value=".app.SearchQueryResults"/>
+        </activity>
+        <activity android:theme="@style/Theme.Holo" android:label="Views/Search View/Filter" android:name="p004io.appium.android.apis.view.SearchViewFilterMode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Rotating Button" android:name="p004io.appium.android.apis.view.RotatingButton">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Secure View" android:name="p004io.appium.android.apis.view.SecureView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Splitting Touches across Views" android:name="p004io.appium.android.apis.view.SplitTouchView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Drag and Drop" android:name="p004io.appium.android.apis.view.DragAndDropDemo" android:enabled="@bool/atLeastHoneycomb" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Game Controller Input" android:name="p004io.appium.android.apis.view.GameControllerInput">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Hover Events" android:name="p004io.appium.android.apis.view.Hover">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/System UI Visibility/System UI Modes" android:name="p004io.appium.android.apis.view.OverscanActivity" android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Holo.Light.DarkActionBar" android:label="Views/System UI Visibility/Content Browser" android:name="p004io.appium.android.apis.view.ContentBrowserActivity" android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Holo" android:label="Views/System UI Visibility/Video Player" android:name="p004io.appium.android.apis.view.VideoPlayerActivity" android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Switches" android:name="p004io.appium.android.apis.view.Switches">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Views/Picker" android:name="p004io.appium.android.apis.view.CustomPicker1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/OpenGL ES/Kube" android:name="p004io.appium.android.apis.graphics.kube.Kube" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Compass" android:name="p004io.appium.android.apis.graphics.Compass">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/CameraPreview" android:name="p004io.appium.android.apis.graphics.CameraPreview" android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NoTitleBar" android:label="Graphics/OpenGL ES/Compressed Texture" android:name="p004io.appium.android.apis.graphics.CompressedTextureActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NoTitleBar" android:label="Graphics/OpenGL ES/Cube Map" android:name="p004io.appium.android.apis.graphics.CubeMapActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NoTitleBar" android:label="Graphics/OpenGL ES/Frame Buffer Object" android:name="p004io.appium.android.apis.graphics.FrameBufferObjectActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NoTitleBar" android:label="Graphics/OpenGL ES/GLSurfaceView" android:name="p004io.appium.android.apis.graphics.GLSurfaceViewActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NoTitleBar" android:label="Graphics/OpenGL ES/OpenGL ES 2.0" android:name="p004io.appium.android.apis.graphics.GLES20Activity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/OpenGL ES/Matrix Palette Skinning" android:name="p004io.appium.android.apis.graphics.MatrixPaletteActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Translucent" android:label="Graphics/OpenGL ES/Translucent GLSurfaceView" android:name="p004io.appium.android.apis.graphics.TranslucentGLSurfaceViewActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Holo.Dialog" android:label="Graphics/OpenGL ES/Textured Triangle" android:name="p004io.appium.android.apis.graphics.TriangleActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NoTitleBar" android:label="Graphics/OpenGL ES/Sprite Text" android:name="p004io.appium.android.apis.graphics.spritetext.SpriteTextActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NoTitleBar" android:label="Graphics/OpenGL ES/Touch Rotate" android:name="p004io.appium.android.apis.graphics.TouchRotateActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/PolyToPoly" android:name="p004io.appium.android.apis.graphics.PolyToPoly">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/ScaleToFit" android:name="p004io.appium.android.apis.graphics.ScaleToFit">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/RoundRects" android:name="p004io.appium.android.apis.graphics.RoundRects">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Drawable/ShapeDrawable" android:name="p004io.appium.android.apis.graphics.ShapeDrawable1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/SurfaceView Overlay" android:name="p004io.appium.android.apis.graphics.SurfaceViewOverlay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Surface Window" android:name="p004io.appium.android.apis.graphics.WindowSurface">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Text Align" android:name="p004io.appium.android.apis.graphics.TextAlign" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Arcs" android:name="p004io.appium.android.apis.graphics.Arcs">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Patterns" android:name="p004io.appium.android.apis.graphics.Patterns">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Clipping" android:name="p004io.appium.android.apis.graphics.Clipping" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Layers" android:name="p004io.appium.android.apis.graphics.Layers">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/UnicodeChart" android:name="p004io.appium.android.apis.graphics.UnicodeChart" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/PathFillTypes" android:name="p004io.appium.android.apis.graphics.PathFillTypes">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Vertices" android:name="p004io.appium.android.apis.graphics.Vertices" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/AnimateDrawables" android:name="p004io.appium.android.apis.graphics.AnimateDrawables">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/SensorTest" android:name="p004io.appium.android.apis.graphics.SensorTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/AlphaBitmap" android:name="p004io.appium.android.apis.graphics.AlphaBitmap">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Regions" android:name="p004io.appium.android.apis.graphics.Regions">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Sweep" android:name="p004io.appium.android.apis.graphics.Sweep">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/BitmapMesh" android:name="p004io.appium.android.apis.graphics.BitmapMesh">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/MeasureText" android:name="p004io.appium.android.apis.graphics.MeasureText">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Typefaces" android:name="p004io.appium.android.apis.graphics.Typefaces">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/FingerPaint" android:name="p004io.appium.android.apis.graphics.FingerPaint">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/ColorMatrix" android:name="p004io.appium.android.apis.graphics.ColorMatrixSample">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/BitmapDecode" android:name="p004io.appium.android.apis.graphics.BitmapDecode" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/ColorFilters" android:name="p004io.appium.android.apis.graphics.ColorFilters">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/CreateBitmap" android:name="p004io.appium.android.apis.graphics.CreateBitmap">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Points" android:name="p004io.appium.android.apis.graphics.DrawPoints" android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Black" android:label="Graphics/Touch Paint" android:name="p004io.appium.android.apis.graphics.TouchPaint" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|screenSize|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/BitmapPixels" android:name="p004io.appium.android.apis.graphics.BitmapPixels">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Xfermodes" android:name="p004io.appium.android.apis.graphics.Xfermodes">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/PathEffects" android:name="p004io.appium.android.apis.graphics.PathEffects">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/Drawable/GradientDrawable" android:name="p004io.appium.android.apis.graphics.GradientDrawable1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Graphics/PurgeableBitmap/NonPurgeable" android:name="p004io.appium.android.apis.graphics.PurgeableBitmap">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="Graphics/PurgeableBitmap/Purgeable" android:name="io.appium.android.apis.Purgeable" android:targetActivity="io.appium.android.apis.graphics.PurgeableBitmap">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:label="Graphics/Density" android:name="p004io.appium.android.apis.graphics.DensityActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Media/MediaPlayer" android:name="p004io.appium.android.apis.media.MediaPlayerDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Media/MediaPlayer" android:name="p004io.appium.android.apis.media.MediaPlayerDemo_Audio">
+            <intent-filter>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Media/MediaPlayer" android:name="p004io.appium.android.apis.media.MediaPlayerDemo_Video">
+            <intent-filter>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Media/VideoView" android:name="p004io.appium.android.apis.media.VideoViewDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Media/AudioFx" android:name="p004io.appium.android.apis.media.AudioFxDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="p004io.appium.android.apis.appwidget.ExampleAppWidgetProvider">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_provider"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="p004io.appium.android.apis.appwidget.ExampleAppWidgetConfigure">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="p004io.appium.android.apis.appwidget.ExampleBroadcastReceiver" android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.ACTION_TIMEZONE_CHANGED"/>
+                <action android:name="android.intent.ACTION_TIME"/>
+            </intent-filter>
+        </receiver>
+        <activity android:label="Text/Linkify" android:name="p004io.appium.android.apis.text.Link">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Text/Marquee" android:name="p004io.appium.android.apis.text.Marquee">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Text/LogTextBox" android:name="p004io.appium.android.apis.text.LogTextBox1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Text/KeyEventText" android:name="p004io.appium.android.apis.text.KeyEventText">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Text/Unicode" android:name="p004io.appium.android.apis.text.Unicode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="NFC/ForegroundDispatch" android:name="p004io.appium.android.apis.nfc.ForegroundDispatch">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="NFC/TechFilter" android:name="p004io.appium.android.apis.nfc.TechFilter">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+            </intent-filter>
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/filter_nfc"/>
+        </activity>
+        <activity android:label="NFC/ForegroundNdefPush" android:name="p004io.appium.android.apis.nfc.ForegroundNdefPush">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="appium.android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

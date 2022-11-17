@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55f9c6c3-a539-4c76-9ee9-393aa7189aba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ApiDemos-debug.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/config/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AndroidManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/IosManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/MobileDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/enums/MobilePlatform.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/BaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/config/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,15 +35,19 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="useMavenConfig" value="true" />
+        <option name="usePluginRegistry" value="true" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="createModuleGroups" value="true" />
         <option name="excludeTargetFolder" value="false" />
-        <option name="jdkForImporter" value="11" />
+        <option name="jdkForImporter" value="#JAVA_HOME" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_HOME" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -71,14 +62,38 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Suggestions",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.30114943",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "settings.editor.selected.configurable": "project.propGUI",
     "settings.editor.splitter.proportion": "0.23421589"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="TestNG.AndroidBasicInteractionsTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.inivos.Main" />
+      <module name="Inivos-mobile-automation-framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.inivos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AndroidBasicInteractionsTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Inivos-mobile-automation-framework" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AndroidBasicInteractionsTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="/Users/nomeshd/POC Projects/UNICENTA/Inivos-mobile-automation-framework/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Inivos-mobile-automation-framework" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
@@ -91,6 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.AndroidBasicInteractionsTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="TestNG./Users/nomeshd/POC Projects/UNICENTA/Inivos-mobile-automation-framework/testng.xml" />
       </list>
     </recent_temporary>
@@ -116,16 +133,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/MobileTestSuite.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
