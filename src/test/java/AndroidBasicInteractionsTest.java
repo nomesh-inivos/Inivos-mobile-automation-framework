@@ -1,13 +1,4 @@
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.touch.TapOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
-
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,6 +16,7 @@ import io.appium.java_client.android.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 public class AndroidBasicInteractionsTest extends BaseTest {
@@ -108,49 +100,58 @@ public class AndroidBasicInteractionsTest extends BaseTest {
 //    }
 
 
-    @Test()
-    public void testSendKeys() {
-        driver.startActivity(new Activity(PACKAGE, SEARCH_ACTIVITY));
-        AndroidElement searchBoxEl = (AndroidElement) driver.findElementById("txt_query_prefill");
-        searchBoxEl.sendKeys("Hello world!");
-        AndroidElement onSearchRequestedBtn = (AndroidElement) driver.findElementById("btn_start_search");
-        onSearchRequestedBtn.click();
-        AndroidElement searchText = (AndroidElement) new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.id("android:id/search_src_text")));
-        String searchTextValue = searchText.getText();
-        Assert.assertEquals(searchTextValue, "Hello world!");
-        driver.hideKeyboard();
-    }
+//    @Test()
+//    public void testSendKeys() {
+//        driver.startActivity(new Activity(PACKAGE, SEARCH_ACTIVITY));
+//        AndroidElement searchBoxEl = (AndroidElement) driver.findElementById("txt_query_prefill");
+//        searchBoxEl.sendKeys("Hello world!");
+//        AndroidElement onSearchRequestedBtn = (AndroidElement) driver.findElementById("btn_start_search");
+//        onSearchRequestedBtn.click();
+//        AndroidElement searchText = (AndroidElement) new WebDriverWait(driver, 30)
+//                .until(ExpectedConditions.visibilityOfElementLocated(By.id("android:id/search_src_text")));
+//        String searchTextValue = searchText.getText();
+//        Assert.assertEquals(searchTextValue, "Hello world!");
+//        driver.hideKeyboard();
+//    }
+//
+//    @Test
+//    public void testOpensAlert() {
+//        // Open the "Alert Dialog" activity of the android app
+//        driver.startActivity(new Activity(PACKAGE, ALERT_DIALOG_ACTIVITY));
+//
+//        // Click button that opens a dialog
+//        AndroidElement openDialogButton = (AndroidElement) driver.findElementById("io.appium.android.apis:id/two_buttons");
+//        openDialogButton.click();
+//
+//        // Check that the dialog is there
+//        AndroidElement alertElement = (AndroidElement) driver.findElementById("android:id/alertTitle");
+//        String alertText = alertElement.getText();
+//        Assert.assertEquals(alertText, "Lorem ipsum dolor sit aie consectetur adipiscing\nPlloaso mako nuto siwuf cakso dodtos anr koop.");
+//        AndroidElement closeDialogButton = (AndroidElement) driver.findElementById("android:id/button1");
+//
+//        // Close the dialog
+//        closeDialogButton.click();
+//    }
+
+//    @Test
+//    public void textTests(){
+//        TextTests test = new TextTests(driver,PACKAGE);
+//        //Key Event Text
+//        test.testKeyPress();
+//        //Click Browser Link in TextView
+//        test.testTextLinksBrowser();
+//        //Click Phone Number in TextView
+//        test.testTextLinksPhone();
+//        //Log Text Box
+//        test.testLogTexBox();
+//    }
 
     @Test
-    public void testOpensAlert() {
-        // Open the "Alert Dialog" activity of the android app
-        driver.startActivity(new Activity(PACKAGE, ALERT_DIALOG_ACTIVITY));
-
-        // Click button that opens a dialog
-        AndroidElement openDialogButton = (AndroidElement) driver.findElementById("io.appium.android.apis:id/two_buttons");
-        openDialogButton.click();
-
-        // Check that the dialog is there
-        AndroidElement alertElement = (AndroidElement) driver.findElementById("android:id/alertTitle");
-        String alertText = alertElement.getText();
-        Assert.assertEquals(alertText, "Lorem ipsum dolor sit aie consectetur adipiscing\nPlloaso mako nuto siwuf cakso dodtos anr koop.");
-        AndroidElement closeDialogButton = (AndroidElement) driver.findElementById("android:id/button1");
-
-        // Close the dialog
-        closeDialogButton.click();
-    }
-
-    @Test
-    public void textTests(){
-        TextTests test = new TextTests(driver,PACKAGE);
-        //Key Event Text
-        test.testKeyPress();
-        //Click Browser Link in TextView
-        test.testTextLinksBrowser();
-        //Click Phone Number in TextView
-        test.testTextLinksPhone();
-        //Log Text Box
-        test.testLogTexBox();
+    public void viewTests(){
+        ViewTests test = new ViewTests(driver,PACKAGE);
+        //AutoComplete ScreenTop Test
+        //test.testAutoCompleteScreenTop();
+        //AutoComplete Scroll Test
+        test.testAutoCompleteScroll();
     }
 }
