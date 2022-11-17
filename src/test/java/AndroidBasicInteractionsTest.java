@@ -31,9 +31,6 @@ public class AndroidBasicInteractionsTest extends BaseTest {
     private AndroidDriver<WebElement> driver;
     private final String SEARCH_ACTIVITY = ".app.SearchInvoke";
     private final String ALERT_DIALOG_ACTIVITY = ".app.AlertDialogSamples";
-
-    private final String KEY_EVENT_ACTIVITY = ".text.KeyEventText";
-    private final String Text_Link_ACTIVITY = ".text.Link";
     private final String PACKAGE = "io.appium.android.apis";
 
     @BeforeClass
@@ -107,7 +104,7 @@ public class AndroidBasicInteractionsTest extends BaseTest {
 
 //    @BeforeMethod
 //    public void beforeMethodTest(){
-//        super.beforeMethodTest("ANDROID",n);
+//        super.beforeMethodTest("Android",n);
 //    }
 
 
@@ -145,46 +142,15 @@ public class AndroidBasicInteractionsTest extends BaseTest {
     }
 
     @Test
-    public void testKeyPress() throws StringIndexOutOfBoundsException{
-        //Opening KeyEventText Activity
-        driver.startActivity(new Activity(PACKAGE,KEY_EVENT_ACTIVITY));
-
-        //Click on the TextView
-
-        AndroidElement TextView = (AndroidElement) driver.findElementById("io.appium.android.apis:id/text");
-        driver.pressKey(new KeyEvent(AndroidKey.A));
-        String text = TextView.getText();
-        String actual = text.substring(0,12);
-        System.out.println(actual);
-        String expected = "[keycode=29]";
-        Assert.assertEquals(actual,expected);
-    }
-
-    @Test
-    public void testTextLinksBrowser(){
-        //Opening Text Linkfy Activity
-        driver.startActivity(new Activity(PACKAGE,Text_Link_ACTIVITY));
-//        AndroidElement link = (AndroidElement) driver.findElementById("io.appium.android.apis:id/text1");
-//        link.findElementByXPath("//*[contains(.,'http://google.com')]").click();
-        //Tap http:www.google.com link
-        driver.performTouchAction(new TouchAction<>(driver).tap(PointOption.point(246,400)).perform());
-
-        String expected = "org.chromium.chrome.browser.firstrun.FirstRunActivity";
-        String actual = driver.currentActivity();
-        Assert.assertEquals(actual,expected);
-    }
-
-    @Test
-    public void testTextLinksPhone(){
-        //Opening Text Linkfy Activity
-        driver.startActivity(new Activity(PACKAGE,Text_Link_ACTIVITY));
-//        AndroidElement link = (AndroidElement) driver.findElementById("io.appium.android.apis:id/text1");
-//        link.findElementByXPath("//*[contains(.,'http://google.com')]").click();
-        //tap on a phone number
-        driver.performTouchAction(new TouchAction<>(driver).tap(PointOption.point(333,518)).perform());
-
-        String expected = ".main.impl.MainActivity";
-        String actual = driver.currentActivity();
-        Assert.assertEquals(actual,expected);
+    public void textTests(){
+        TextTests test = new TextTests(driver,PACKAGE);
+        //Key Event Text
+        test.testKeyPress();
+        //Click Browser Link in TextView
+        test.testTextLinksBrowser();
+        //Click Phone Number in TextView
+        test.testTextLinksPhone();
+        //Log Text Box
+        test.testLogTexBox();
     }
 }
