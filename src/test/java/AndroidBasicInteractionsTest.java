@@ -170,11 +170,17 @@ public class AndroidBasicInteractionsTest extends BaseTest {
 //
 //        //Views Drag and Drop
 //        test.testDragDrop();
+//
+//        //Views Expandable Lists
+//        test.testExpandableList();
 
-        //Views Expandable Lists
-        //test.testExpandableList();
+//        //Views Image Switcher
+//        test.testImageSwitcher();
 
-        //Views Image Switcher
-        test.testImageSwitcher();
+//        //Views ScrollBars Style
+//        test.testScrollBars();
+
+        //Views Rating Bar
+        test.testRatingBar();
     }
 }

@@ -1,15 +1,19 @@
+import android.media.Image;
+import android.widget.ScrollView;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +21,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import javax.inject.Scope;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -38,6 +43,8 @@ public class ViewTests {
     private final String DRAGDROP_TEST = ".view.DragAndDropDemo";
     private final String EXPANDABLE_LIST_TEST = ".view.ExpandableList1";
     private final String IMAGE_SWITCHER_TEST = ".view.ImageSwitcher1";
+    private final String SCROLL_BARS_TEST = ".view.ScrollBar3";
+    private final String RATING_BAR_TEST = ".view.RatingBar1";
     private final String PACKAGE;
 
     public ViewTests(AndroidDriver<WebElement> driver,String packageName){
@@ -278,10 +285,66 @@ public class ViewTests {
 
         //Image Gallery
         AndroidElement Gallery = (AndroidElement) driver.findElementById("io.appium.android.apis:id/gallery");
-//        new TouchAction<>(driver).tap(PointOption.point(600,1700)).perform();
-        driver.performTouchAction(new TouchAction<>(driver).press(PointOption.point(800,1715)).moveTo(PointOption.point(200,1715)).perform());
-        driver.performTouchAction(new TouchAction<>(driver).tap(PointOption.point(715,1650)).perform());
 
+        //ImageView
+        AndroidElement Image4 = (AndroidElement) driver.findElementByXPath("//android.widget.Gallery/android.widget.ImageView[4]");
+        Image4.click();
+
+
+        new TouchAction<>(driver).longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(Image4))).perform();
+
+        Image4 = (AndroidElement) driver.findElementByXPath("//android.widget.Gallery/android.widget.ImageView[5]");
+
+        new TouchAction<>(driver).longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(Image4))).perform();
+    }
+
+    @Test
+    public void testScrollBars(){
+        //Opening Views ScrollBars Style Activity
+        driver.startActivity(new Activity(PACKAGE,SCROLL_BARS_TEST));
+
+        AndroidElement ScrollView3 = (AndroidElement) driver.findElementById("io.appium.android.apis:id/view3");
+        new TouchAction<>(driver).press(PointOption.point(ScrollView3.getCenter().x,ScrollView3.getCenter().y +150))
+                .moveTo(PointOption.point(ScrollView3.getCenter().x, ScrollView3.getCenter().y - 100))
+                .release().perform();
+
+        AndroidElement startElement = (AndroidElement) driver.findElementByXPath("(//android.widget.TextView[@content-desc=\"Lorem ipsum dolor sit amet.\"])[4]");
+        AndroidElement endElement = (AndroidElement) driver.findElementByXPath("(//android.widget.TextView[@content-desc=\"Lorem ipsum dolor sit amet.\"])[1]");
+
+
+        int startX = startElement.getLocation().getX() + (startElement.getSize().getWidth() / 2);
+        int startY = startElement.getLocation().getY() + (startElement.getSize().getHeight() / 2);
+        int endX = endElement.getLocation().getX() + (endElement.getSize().getWidth() / 2);
+        int endY = endElement.getLocation().getY() + (endElement.getSize().getHeight() / 2);
+        new TouchAction(driver)
+                .press(PointOption.point(startX,startY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
+                .moveTo(PointOption.point(endX, endY))
+                .release().perform();
+    }
+
+    @Test
+    public void testRatingBar(){
+        //Opening Views Rating bar Activity
+        driver.startActivity(new Activity(PACKAGE,RATING_BAR_TEST));
+
+        AndroidElement RatingBar = (AndroidElement) driver.findElementById("io.appium.android.apis:id/ratingbar2");
+        double StartPerc = 0.2;
+        double EndPerc = 0.65;
+        int startX = RatingBar.getLocation().getX() + (int) (RatingBar.getSize().getWidth()*StartPerc);
+        int y = RatingBar.getCenter().getY();
+        int endX = RatingBar.getLocation().getX() + (int) (RatingBar.getSize().getWidth()*EndPerc);
+        new TouchAction(driver)
+                .press(PointOption.point(startX,y))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
+                .moveTo(PointOption.point(endX, y))
+                .release().perform();
+
+        AndroidElement RatingText = (AndroidElement) driver.findElementById("io.appium.android.apis:id/rating");
+        String Actual = RatingText.getText().split(":")[1].trim().split("/")[0];
+        String Expected = "3.5";
+
+        Assert.assertEquals(Actual,Expected);
     }
 
 }
