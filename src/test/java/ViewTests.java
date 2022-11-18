@@ -25,6 +25,7 @@ import java.time.LocalTime;
 import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 public class ViewTests {
     private AndroidDriver<WebElement> driver;
@@ -34,6 +35,9 @@ public class ViewTests {
     private final String TOGGLE_BUTTON_TEST = ".view.Buttons1";
     private final String CHRONOMETER_TEST = ".view.ChronometerDemo";
     private final String DATEWIDGET_TEST = ".view.DateWidgets1";
+    private final String DRAGDROP_TEST = ".view.DragAndDropDemo";
+    private final String EXPANDABLE_LIST_TEST = ".view.ExpandableList1";
+    private final String IMAGE_SWITCHER_TEST = ".view.ImageSwitcher1";
     private final String PACKAGE;
 
     public ViewTests(AndroidDriver<WebElement> driver,String packageName){
@@ -226,6 +230,58 @@ public class ViewTests {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("io.appium.android.apis:id/dateDisplay")));
         String time = Date.getText().split(" ")[1];
         Assert.assertEquals(time,"09:45");
+    }
+
+    @Test
+    public void testDragDrop(){
+        //Opening Views Drag and drop Activity
+        driver.startActivity(new Activity(PACKAGE,DRAGDROP_TEST));
+
+        AndroidElement dot1 = (AndroidElement) driver.findElementById("io.appium.android.apis:id/drag_dot_1");
+        AndroidElement dot2 = (AndroidElement) driver.findElementById("io.appium.android.apis:id/drag_dot_2");
+
+        new TouchAction<>(driver).longPress(PointOption.point(dot1.getCenter().x,dot1.getCenter().y)).moveTo(PointOption.point(dot2.getCenter().x,dot2.getCenter().y)).release().perform();
+
+        String result = driver.findElementById("io.appium.android.apis:id/drag_result_text").getText();
+
+        Assert.assertEquals(result,"Dropped!");
+    }
+
+    @Test
+    public void testExpandableList(){
+        driver.startActivity(new Activity(PACKAGE,EXPANDABLE_LIST_TEST));
+
+        List<WebElement> ListElements = driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+
+        int original = ListElements.size();
+
+        ListElements.get(0).click();
+
+        ListElements = driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+        int extented = ListElements.size();
+
+        Assert.assertEquals(extented,8);
+
+        ListElements.get(0).click();
+
+        ListElements = driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+        int subtrcated = ListElements.size();
+
+        Assert.assertEquals(subtrcated,original);
+
+    }
+
+    @Test
+    public void testImageSwitcher(){
+        //Opening Image Switcher Activity
+        driver.startActivity(new Activity(PACKAGE,IMAGE_SWITCHER_TEST));
+
+        //Image Gallery
+        AndroidElement Gallery = (AndroidElement) driver.findElementById("io.appium.android.apis:id/gallery");
+//        new TouchAction<>(driver).tap(PointOption.point(600,1700)).perform();
+        driver.performTouchAction(new TouchAction<>(driver).press(PointOption.point(800,1715)).moveTo(PointOption.point(200,1715)).perform());
+        driver.performTouchAction(new TouchAction<>(driver).tap(PointOption.point(715,1650)).perform());
+
     }
 
 }

@@ -133,39 +133,48 @@ public class AndroidBasicInteractionsTest extends BaseTest {
 //        closeDialogButton.click();
 //    }
 
-    @Test
-    public void textTests(){
-        TextTests test = new TextTests(driver,PACKAGE);
-        //Key Event Text
-        test.testKeyPress();
-        //Click Browser Link in TextView
-        test.testTextLinksBrowser();
-        //Click Phone Number in TextView
-        test.testTextLinksPhone();
-        //Log Text Box
-        test.testLogTexBox();
-    }
+//    @Test
+//    public void textTests(){
+//        TextTests test = new TextTests(driver,PACKAGE);
+//        //Key Event Text
+//        test.testKeyPress();
+//        //Click Browser Link in TextView
+//        test.testTextLinksBrowser();
+//        //Click Phone Number in TextView
+//        test.testTextLinksPhone();
+//        //Log Text Box
+//        test.testLogTexBox();
+//    }
 
     @Test
     public void viewTests(){
         ViewTests test = new ViewTests(driver,PACKAGE);
-        //Views AutoComplete
-        //AutoComplete ScreenTop Test
-        test.testAutoCompleteScreenTop();
-        //AutoComplete Scroll Test
-        test.testAutoCompleteScroll();
-        //AutoComplete Multiple Test
-        test.testAutoCompleteMultiple();
+//        //Views AutoComplete
+//        //AutoComplete ScreenTop Test
+//        test.testAutoCompleteScreenTop();
+//        //AutoComplete Scroll Test
+//        test.testAutoCompleteScroll();
+//        //AutoComplete Multiple Test
+//        test.testAutoCompleteMultiple();
+//
+//        //Views ToggleButton
+//        test.testToggleButton();
+//
+//        //Views Chronometer
+//        //Start,Stop,Reset Time Test
+//        test.testChronometerStart();
+//
+//        //Views DateWidget
+//        //Date Widget Dialog date,time,spinner
+//        test.testDateWidget();
+//
+//        //Views Drag and Drop
+//        test.testDragDrop();
 
-        //Views ToggleButton
-        test.testToggleButton();
+        //Views Expandable Lists
+        //test.testExpandableList();
 
-        //Views Chronometer
-        //Start,Stop,Reset Time Test
-        test.testChronometerStart();
-
-        //Views DateWidget
-        //Date Widget Dialog date,time,spinner
-        test.testDateWidget();
+        //Views Image Switcher
+        test.testImageSwitcher();
     }
 }
