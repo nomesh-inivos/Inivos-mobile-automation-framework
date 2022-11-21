@@ -14,8 +14,9 @@ public class AppiumDriverFactory {
     private static Logger LOGGER = LoggerFactory.getLogger(AppiumDriverFactory.class);
 
     public static AppiumDriver<?> getDriver(String platform){
+        System.out.println(MobilePlatform.ANDROID.name().equals(platform));
         LOGGER.debug("loading the AppiumDriverFactory getDriver.. platform is: >>>>>>>", platform);
-        if(platform == (MobilePlatform.ANDROID.name())){
+        if(platform.equals(MobilePlatform.ANDROID.name())){
             mobileDriver = AndroidManager.getDriver();
         }else{
             mobileDriver = IosManager.getDriver();

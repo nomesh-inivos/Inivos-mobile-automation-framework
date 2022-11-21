@@ -37,17 +37,16 @@ public abstract class BaseTest {
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("Automation Tester", "Inivos - QA Department");
-
     }
 
-//    @BeforeMethod
-//    @Parameters(value={"platform"})
-//    public void beforeMethodTest(String platform, Method testMethod) {
-//        logger = extent.createTest(testMethod.getName());
-//        driver = AppiumDriverFactory.getDriver(platform);
-//        driver.get(Constants.PLATFORM);
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//    }
+    @BeforeMethod
+    @Parameters(value={"platform"})
+    public void beforeMethodTest(String platform, Method testMethod) {
+        logger = extent.createTest(testMethod.getName());
+        driver = AppiumDriverFactory.getDriver(platform);
+        //driver.get(Constants.PLATFORM);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
 
     private static AppiumDriverLocalService service;
 

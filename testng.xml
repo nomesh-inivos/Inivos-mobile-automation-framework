@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Practice Suite">
-    <test name="Regression">
-        <parameter name="emailid" value="nomesh.desilva@inivossl.com"/>
-        <parameter name="password" value="test@123"/>
+<suite name="Default Suite" guice-stage="DEVELOPMENT" verbose="0">
+    <test name="Inivos-mobile-automation-framework(failed)">
+        <parameter name="platform" value="ANDROID"/>
         <classes>
-<!--            <class name="BaseTest"/>-->
-            <class name="MobileTestSuite"/>
+            <class name="MobileTestSuite">
+                <methods>
+                    <include name="textTests"/>
+                    <include name="startTest"/>
+                    <include name="beforeTest"/>
+                    <include name="startSuite"/>
+                    <include name="beforeMethodTest"/>
+                    <include name="globalSetup"/>
+                </methods>
+            </class> <!-- MobileTestSuite -->
         </classes>
-    </test>
-
-    <!-- Test -->
-
-<!--    <test name="Test Basics 2">-->
-<!--        <parameter name="emailid" value="tester789@gmail.com"/>-->
-<!--        <classes>-->
-<!--            <class name=""/>-->
-<!--        </classes>-->
-<!--    </test> -->
-    <!-- Test -->
-</suite> <!-- Suite -->
+    </test> <!-- Inivos-mobile-automation-framework(failed) -->
+</suite> <!-- Default Suite -->

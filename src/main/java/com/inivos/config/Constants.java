@@ -9,8 +9,8 @@ public interface Constants {
     String APP_NAME = "ApiDemos-debug";
     String APPIUM_URL = "http://127.0.0.1:4723/wd/hub";
     String ANDROID_PLATFORM_VERSION = "11";
-    String APP_PACKAGE = "com.invoiceapp";
-    String APP_ACTIVITY = "com.invoiceapp.InvoiceLaunchScreenAct";
+    String APP_PACKAGE = "io.appium.android.apis";
+    String APP_ACTIVITY = ".ApiDemos";
     String ANDROID_DEVICE_NAME ="emulator-5554";
     /**
      * IOS properties ------------

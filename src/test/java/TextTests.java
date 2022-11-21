@@ -11,14 +11,14 @@ import org.testng.annotations.Test;
 
 //API_DEMOS TEXT tests
 public class TextTests {
-    private AndroidDriver<WebElement> driver;
+    private AndroidDriver<?> driver;
     private final String KEY_EVENT_ACTIVITY = ".text.KeyEventText";
     private final String Text_Link_ACTIVITY = ".text.Link";
 
     private final String LOG_TEXT_ACTIVITY = ".text.LogTextBox1";
     private final String PACKAGE;
 
-    public TextTests(AndroidDriver<WebElement> driver,String packageName){
+    public TextTests(AndroidDriver<?> driver,String packageName){
         this.PACKAGE = packageName;
         this.driver = driver;
     }
@@ -62,7 +62,8 @@ public class TextTests {
 //        AndroidElement link = (AndroidElement) driver.findElementById("io.appium.android.apis:id/text1");
 //        link.findElementByXPath("//*[contains(.,'http://google.com')]").click();
         //tap on a phone number
-        driver.performTouchAction(new TouchAction<>(driver).tap(PointOption.point(333,518)).perform());
+        driver.performTouchAction(new TouchAction<>(driver)
+                .tap(PointOption.point(333,518)).perform());
 
         String expected = ".main.impl.MainActivity";
         String actual = driver.currentActivity();

@@ -1,5 +1,3 @@
-import android.media.Image;
-import android.widget.ScrollView;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
@@ -45,6 +43,7 @@ public class ViewTests {
     private final String IMAGE_SWITCHER_TEST = ".view.ImageSwitcher1";
     private final String SCROLL_BARS_TEST = ".view.ScrollBar3";
     private final String RATING_BAR_TEST = ".view.RatingBar1";
+    private final String SLIDING_PICKER_TEST = ".view.CustomPicker1";
     private final String PACKAGE;
 
     public ViewTests(AndroidDriver<WebElement> driver,String packageName){
@@ -160,7 +159,12 @@ public class ViewTests {
         AndroidElement ChronometerStart = (AndroidElement) driver.findElementById("io.appium.android.apis:id/start");
         AndroidElement ChronometerStop = (AndroidElement) driver.findElementById("io.appium.android.apis:id/stop");
 
-        new TouchAction<>(driver).tap(TapOptions.tapOptions().withElement(ElementOption.element(ChronometerStart))).waitAction(WaitOptions.waitOptions(Duration.ofMillis(5000))).perform().tap(TapOptions.tapOptions().withElement(ElementOption.element(ChronometerStop))).perform();
+        new TouchAction<>(driver).tap(TapOptions.tapOptions()
+                .withElement(ElementOption.element(ChronometerStart)))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(5000)))
+                .perform().tap(TapOptions.tapOptions()
+                        .withElement(ElementOption.element(ChronometerStop)))
+                .perform();
 
         //Filter The Text
         String text = ChronometerText.getText().replaceAll("[^\\d]","");
@@ -345,6 +349,30 @@ public class ViewTests {
         String Expected = "3.5";
 
         Assert.assertEquals(Actual,Expected);
+    }
+
+    @Test
+    public void testSlidingPicker(){
+        //Opening S
+        driver.startActivity(new Activity(PACKAGE,SLIDING_PICKER_TEST));
+
+        AndroidElement Picker = (AndroidElement) driver.findElementById("android:id/numberpicker_input");
+
+        int startY = Picker.getCenter().getY() + 200;
+        int x = Picker.getCenter().getY();
+        int endY = Picker.getCenter().getY() - 200;;
+        new TouchAction(driver)
+                .press(PointOption.point(x,startY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                .moveTo(PointOption.point(x, endY))
+                .release().perform();
+
+        WebDriverWait wait = new WebDriverWait(driver,19);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("io.appium.android.apis:id/textView1")));
+
+        AndroidElement PickerText = (AndroidElement) driver.findElementById("io.appium.android.apis:id/textView1");
+
+        Assert.assertNotNull(PickerText.getText());
     }
 
 }

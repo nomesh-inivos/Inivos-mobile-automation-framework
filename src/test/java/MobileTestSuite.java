@@ -1,8 +1,5 @@
 import com.inivos.config.Constants;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -11,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -36,17 +34,15 @@ public class MobileTestSuite extends BaseTest{
     public static ExtentTest test;
 
     // Initiating Appium Driver
-    public static AppiumDriver<?> driver;
+    public static AndroidDriver<?> driver;
     /*
      * This method is used for initializing the Log4j and Config.properties
      */
     @BeforeSuite
-    public static void startSuite() {
+    public void startSuite() {
         log = Logger.getLogger(MobileTestSuite.class);
         log.info("Test Started successfully");
     }
-
-
 
     /*
      * This method is used for init the Appium Driver and Extent report
@@ -85,7 +81,7 @@ public class MobileTestSuite extends BaseTest{
     /*
      * This method is used for initiate the AppiumDriver with caps and connection protocol
      */
-    public static AppiumDriver<?> startAppium() {
+    public static AndroidDriver<?> startAppium() {
         // Initializing the Appium driver
         try {
             DesiredCapabilities cap = new DesiredCapabilities();
@@ -101,6 +97,7 @@ public class MobileTestSuite extends BaseTest{
 
             // Declaring the driver as "Android driver" with the Host and Port number to communicate with Appium desktop
             driver = new AndroidDriver<AndroidElement>(new URL(Constants.APPIUM_URL), cap);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             //Printing the driver details in Log file
             log.info("Driver declared successfully : " +driver);
         } catch (Exception e) {
@@ -114,6 +111,7 @@ public class MobileTestSuite extends BaseTest{
 
     @BeforeMethod
     public static void openApp() {
+        startTest();
         log.info("Test case started successfully");
         log.info("Trying to launch the Application under Test");
         try{
@@ -124,4 +122,23 @@ public class MobileTestSuite extends BaseTest{
         }
     }
 
+    @Test
+    public void textTests(){
+        TextTests test = new TextTests(driver,Constants.APP_PACKAGE);
+        //Key Event Text
+        test.testKeyPress();
+        //Click Browser Link in TextView
+        test.testTextLinksBrowser();
+        //Click Phone Number in TextView
+        test.testTextLinksPhone();
+        //Log Text Box
+        test.testLogTexBox();
+    }
+
+    @AfterClass
+    public void tearDown() {
+        if (driver != null) {
+            //driver.quit();
+        }
+    }
 }
