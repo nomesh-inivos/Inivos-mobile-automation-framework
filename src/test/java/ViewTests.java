@@ -11,6 +11,7 @@ import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -57,73 +58,77 @@ public class ViewTests {
 //    }
 
     @Test
-    public void testAutoCompleteScreenTop(){
+    public void testAutoCompleteScreenTop() throws InterruptedException{
         //Opening autocomplete screentop activity
-        driver.startActivity(new Activity(PACKAGE,AUTOCOMPLETE_SCREENTOP_TEST));
+        driver.startActivity(new Activity("io.appium.android.apis",".view.AutoComplete1"));
 
-        AndroidElement TextInput = (AndroidElement) driver.findElementById("io.appium.android.apis:id/edit");
-        driver.pressKey(new KeyEvent(AndroidKey.S));
-        driver.pressKey(new KeyEvent(AndroidKey.R));
+        AndroidElement TextInput = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/edit","Id");
+        System.out.println(TextInput.isDisplayed());
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.S);
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.R);
+
         int x = TextInput.getCenter().x;
         int y = TextInput.getCenter().y + 100;
-        driver.performTouchAction(new TouchAction(driver).tap(PointOption.point(x,y)).perform());
 
-        String actual = TextInput.getText();
+        AppiumTestSupport.tapOnCoordinate(driver,new Point(x,y));
+
+        String actual = AppiumTestSupport.getElementText(TextInput);
         String expected = "Sri Lanka";
 
         driver.hideKeyboard();
 
         Assert.assertEquals(actual,expected);
     }
-
     @Test
-    public void testAutoCompleteScroll(){
+    public void testAutoCompleteScroll() throws InterruptedException {
         //Opening autocomplete scroll activity
         driver.startActivity(new Activity(PACKAGE,AUTOCOMPLETE_SCROLL_TEST));
 
         //Scroll down to input
-        AndroidElement ScrollView = (AndroidElement) driver.findElementByXPath("//android.widget.ScrollView");
+        AndroidElement ScrollView = AppiumTestSupport.locateElement(driver,"//android.widget.ScrollView","xpath");
 
         int stx = ScrollView.getCenter().x;
         int sty = ScrollView.getCenter().y + 600;
         int enx = ScrollView.getCenter().x;
         int eny = ScrollView.getCenter().y - 600;
 
-        driver.performTouchAction(new TouchAction<>(driver).press(PointOption.point(stx,sty)).moveTo(PointOption.point(enx,eny)).release().perform());
+        AppiumTestSupport.swipeByCoordinate(driver,new Point(stx,sty),new Point(enx,eny));
 
+        AndroidElement TextInput = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/edit","id");
+        AppiumTestSupport.pressOnElement(driver,TextInput);
 
-        AndroidElement TextInput = (AndroidElement) driver.findElementById("io.appium.android.apis:id/edit");
-        new TouchAction<>(driver).press(PointOption.point(TextInput.getCenter().x,TextInput.getCenter().y)).release().perform();
-        driver.pressKey(new KeyEvent(AndroidKey.S));
-        driver.pressKey(new KeyEvent(AndroidKey.R));
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.S);
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.R);
 
-        driver.performTouchAction(new TouchAction(driver).tap(PointOption.point(TextInput.getCenter().x,TextInput.getCenter().y - 100)).perform());
-
+        AppiumTestSupport.tapOnCoordinate(driver,new Point(TextInput.getCenter().getX(),TextInput.getCenter().getY() -100));
         String actual = TextInput.getText();
         String expected = "Sri Lanka";
 
-        driver.hideKeyboard();
+        AppiumTestSupport.hideKeyboard(driver);
 
         Assert.assertEquals(actual,expected);
     }
 
     @Test
-    public void testAutoCompleteMultiple(){
+    public void testAutoCompleteMultiple() throws InterruptedException {
         //Opening autocomplete Multiple Items activity
         driver.startActivity(new Activity(PACKAGE,AUTOCOMPLETE_Multiple_TEST));
 
-        AndroidElement TextInput = (AndroidElement) driver.findElementById("io.appium.android.apis:id/edit");
-        driver.pressKey(new KeyEvent(AndroidKey.S));
-        driver.pressKey(new KeyEvent(AndroidKey.R));
+        AndroidElement TextInput = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/edit","id");
+
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.S);
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.R);
+
         int x = TextInput.getCenter().x;
         int y = TextInput.getCenter().y + 100;
-        driver.performTouchAction(new TouchAction(driver).tap(PointOption.point(x,y)).perform());
+        AppiumTestSupport.tapOnCoordinate(driver,new Point(x,y));
 
-        driver.pressKey(new KeyEvent(AndroidKey.U));
-        driver.pressKey(new KeyEvent(AndroidKey.N));
-        driver.performTouchAction(new TouchAction(driver).tap(PointOption.point(x,y)).perform());
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.U);
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.N);
 
-        driver.hideKeyboard();
+        AppiumTestSupport.tapOnCoordinate(driver,new Point(x,y));
+
+        AppiumTestSupport.hideKeyboard(driver);
 
         int actual = TextInput.getText().split(",").length - 1;
         int expected = 2;
@@ -150,28 +155,31 @@ public class ViewTests {
     }
 
     @Test
-    public void testChronometerStart(){
+    public void testChronometerStart() throws InterruptedException {
         //Open Chronometer Activity
         driver.startActivity(new Activity(PACKAGE,CHRONOMETER_TEST));
 
-        AndroidElement ChronometerText = (AndroidElement) driver.findElementById("io.appium.android.apis:id/chronometer");
+        AndroidElement ChronometerText = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/chronometer","id");
 
-        AndroidElement ChronometerStart = (AndroidElement) driver.findElementById("io.appium.android.apis:id/start");
-        AndroidElement ChronometerStop = (AndroidElement) driver.findElementById("io.appium.android.apis:id/stop");
+        AndroidElement ChronometerStart = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/start","id");
+        AndroidElement ChronometerStop = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/stop","id");
 
-        new TouchAction<>(driver).tap(TapOptions.tapOptions()
-                        .withElement(ElementOption.element(ChronometerStart)))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(5000)))
-                .perform().tap(TapOptions.tapOptions()
-                        .withElement(ElementOption.element(ChronometerStop)))
-                .perform();
+        AppiumTestSupport.tapOnElement(driver,ChronometerStart,5000);
+        AppiumTestSupport.tapOnElement(driver,ChronometerStop);
+
+//        new TouchAction<>(driver).tap(TapOptions.tapOptions()
+//                        .withElement(ElementOption.element(ChronometerStart)))
+//                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(5000)))
+//                .perform().tap(TapOptions.tapOptions()
+//                        .withElement(ElementOption.element(ChronometerStop)))
+//                .perform();
 
         //Filter The Text
         String text = ChronometerText.getText().replaceAll("[^\\d]","");
 
         Assert.assertEquals(text,"0006");
 
-        AndroidElement ChronometerResetButton = (AndroidElement) driver.findElementById("io.appium.android.apis:id/reset");
+        AndroidElement ChronometerResetButton = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/reset","id");
         ChronometerResetButton.click();
 
         text = ChronometerText.getText().replaceAll("[^\\d]","");

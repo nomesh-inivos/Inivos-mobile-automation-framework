@@ -1,3 +1,4 @@
+import android.widget.Switch;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -11,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.ScreenOrientation;
 
 import java.time.Duration;
 import java.util.List;
@@ -28,7 +30,7 @@ public class AppiumTestSupport {
                     Thread.sleep(10000);
                     return (AndroidElement) driver.findElementById(locator);
                 }
-            case "ACCESSIBLEID":
+            case "ACCESSIBILITYID":
                 element = (AndroidElement) driver.findElementByAccessibilityId(locator);
                 if(element.isDisplayed()){
                     return element;
@@ -71,7 +73,7 @@ public class AppiumTestSupport {
                     Thread.sleep(10000);
                     return (List<AndroidElement>) driver.findElementsById(locator);
                 }
-            case "ACCESSIBLEID":
+            case "ACCESSIBILITYID":
                 elements = (List<AndroidElement>) driver.findElementsByAccessibilityId(locator);
                 if(elements.get(0).isDisplayed()){
                     return elements;
@@ -163,18 +165,33 @@ public class AppiumTestSupport {
         new TouchAction<>(driver).tap(PointOption.point(tap)).perform();
     }
 
-    public static void tapOnElement(AndroidDriver<?> driver, AndroidElement element){
-        new TouchAction<>(driver)
-                .tap(TapOptions.tapOptions().withElement(ElementOption.element(element)));
+    public static void tapOnCoordinate(AndroidDriver<?> driver, int x, int y){
+        new TouchAction<>(driver).tap(PointOption.point(x,y)).perform();
     }
 
-    public static void pressOnElement(AndroidDriver<?> driver, @NotNull AndroidElement element){
-        new TouchAction<>(driver)
-                .press(PointOption.point(element.getCenter().x,element.getCenter().y)).perform();
+    public static TouchAction tapOnElement(AndroidDriver<?> driver, AndroidElement element){
+        return new TouchAction<>(driver)
+                .tap(TapOptions.tapOptions().withElement(ElementOption.element(element))).perform();
     }
 
-    public static void longPressOnElement(AndroidDriver<?> driver, @NotNull AndroidElement element){
-        new TouchAction<>(driver)
+    public static TouchAction tapOnElement(AndroidDriver<?> driver, AndroidElement element,long waitMillis){
+        return new TouchAction<>(driver)
+                .tap(TapOptions.tapOptions().withElement(ElementOption.element(element)))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis))).perform();
+    }
+
+    public static TouchAction pressOnCoordinate(AndroidDriver<?> driver, @NotNull Point press){
+        return new TouchAction<>(driver)
+                .press(PointOption.point(press)).release().perform();
+    }
+
+    public static TouchAction pressOnElement(AndroidDriver<?> driver, @NotNull AndroidElement element){
+        return new TouchAction<>(driver)
+                .press(PointOption.point(element.getCenter().x,element.getCenter().y)).release().perform();
+    }
+
+    public static TouchAction longPressOnElement(AndroidDriver<?> driver, @NotNull AndroidElement element){
+        return new TouchAction<>(driver)
                 .longPress(PointOption.point(element.getCenter().x,element.getCenter().y)).perform();
     }
 
@@ -194,5 +211,19 @@ public class AppiumTestSupport {
         return driver.currentActivity();
     }
 
-    public static void hideKeyboard(AndroidDriver<?> driver){ driver.hideKeyboard(); }
+    public static void hideKeyboard(@NotNull AndroidDriver<?> driver){ driver.hideKeyboard(); }
+
+    public static String getCurrentOrientation(@NotNull AndroidDriver<?> driver){ return driver.getOrientation().name(); }
+
+    public static void setOrientation(AndroidDriver<?> driver, @NotNull String orientation){
+        switch(orientation.toUpperCase()){
+            case "LANDSCAPE":
+                driver.rotate(ScreenOrientation.LANDSCAPE);
+                break;
+            default:
+                driver.rotate(ScreenOrientation.PORTRAIT);
+                break;
+        }
+    }
+
 }

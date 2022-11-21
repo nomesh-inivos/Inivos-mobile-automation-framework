@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="55f9c6c3-a539-4c76-9ee9-393aa7189aba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/AppiumTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppiumTestSupport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +168,19 @@
         </entry>
         <entry key="d32ecc04-5c4d-4053-93bf-ba41f924fe86">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -176,6 +188,21 @@
     <option name="OPEN_GENERIC_TABS">
       <map>
         <entry key="d32ecc04-5c4d-4053-93bf-ba41f924fe86" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

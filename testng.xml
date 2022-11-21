@@ -6,7 +6,7 @@
         <classes>
             <class name="MobileTestSuite">
                 <methods>
-                    <include name="testAutoCompleteScreenTop"/>
+                    <include name="viewTests" />
                     <include name="textTests" />
                     <include name="beforeTest" />
                     <include name="startSuite" />

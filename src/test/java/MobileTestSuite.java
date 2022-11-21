@@ -116,80 +116,58 @@ public class MobileTestSuite extends BaseTest{
         }
     }
 
-    @Test
-    public void testAutoCompleteScreenTop() throws InterruptedException{
-        //Opening autocomplete screentop activity
-        driver.startActivity(new Activity("io.appium.android.apis",".view.AutoComplete1"));
-
-        AndroidElement TextInput = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/edit","Id");
-        System.out.println(TextInput.isDisplayed());
-        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.S);
-        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.R);
-
-        int x = TextInput.getCenter().x;
-        int y = TextInput.getCenter().y + 100;
-
-        AppiumTestSupport.tapOnCoordinate(driver,new Point(x,y));
-
-        String actual = AppiumTestSupport.getElementText(TextInput);
-        String expected = "Sri Lanka";
-
-        driver.hideKeyboard();
-
-        Assert.assertEquals(actual,expected);
-    }
+//    @Test
+//    public void textTests() throws InterruptedException {
+//        TextTests test = new TextTests(driver,"io.appium.android.apis");
+//        //Key Event Text
+//        test.testKeyPress();
+//        //Click Browser Link in TextView
+//        test.testTextLinksBrowser();
+//        //Click Phone Number in TextView
+//        test.testTextLinksPhone();
+//        //Log Text Box
+//        test.testLogTexBox();
+//    }
 
     @Test
-    public void textTests() throws InterruptedException {
-        TextTests test = new TextTests(driver,"io.appium.android.apis");
-        //Key Event Text
-        test.testKeyPress();
-        //Click Browser Link in TextView
-        test.testTextLinksBrowser();
-        //Click Phone Number in TextView
-        test.testTextLinksPhone();
-        //Log Text Box
-        test.testLogTexBox();
-    }
-    @Test
-    public void viewTests(){
+    public void viewTests() throws InterruptedException {
         ViewTests test = new ViewTests(driver,"io.appium.android.apis");
         //Views AutoComplete
         //AutoComplete ScreenTop Test
-        test.testAutoCompleteScreenTop();
-        //AutoComplete Scroll Test
-        test.testAutoCompleteScroll();
-        //AutoComplete Multiple Test
-        test.testAutoCompleteMultiple();
-
-        //Views ToggleButton
-        test.testToggleButton();
-
-        //Views Chronometer
-        //Start,Stop,Reset Time Test
-        test.testChronometerStart();
-
-        //Views DateWidget
-        //Date Widget Dialog date,time,spinner
-        test.testDateWidget();
-
-        //Views Drag and Drop
-        test.testDragDrop();
-
-        //Views Expandable Lists
-        test.testExpandableList();
-
-        //Views Image Switcher
-        test.testImageSwitcher();
-
-        //Views ScrollBars Style
-        test.testScrollBars();
-
-        //Views Rating Bar
-        test.testRatingBar();
-
-        //Views Sliding Picker
-        test.testSlidingPicker();
+//        test.testAutoCompleteScreenTop();
+//        //AutoComplete Scroll Test
+//        test.testAutoCompleteScroll();
+//        //AutoComplete Multiple Test
+//        test.testAutoCompleteMultiple();
+//
+//        //Views ToggleButton
+//        test.testToggleButton();
+//
+//        //Views Chronometer
+//        //Start,Stop,Reset Time Test
+//        test.testChronometerStart();
+//
+//        //Views DateWidget
+//        //Date Widget Dialog date,time,spinner
+//        test.testDateWidget();
+//
+//        //Views Drag and Drop
+//        test.testDragDrop();
+//
+//        //Views Expandable Lists
+//        test.testExpandableList();
+//
+//        //Views Image Switcher
+//        test.testImageSwitcher();
+//
+//        //Views ScrollBars Style
+//        test.testScrollBars();
+//
+//        //Views Rating Bar
+//        test.testRatingBar();
+//
+//        //Views Sliding Picker
+//        test.testSlidingPicker();
     }
 
     @AfterClass
