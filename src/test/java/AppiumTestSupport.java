@@ -8,13 +8,15 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 
 import java.time.Duration;
+import java.util.List;
 
 public class AppiumTestSupport {
-    public static AndroidElement locateElement(@NotNull AndroidDriver<?> driver, @NotNull String locator, @NotNull String method) throws InterruptedException {
+    public static @Nullable AndroidElement locateElement(@NotNull AndroidDriver<?> driver, @NotNull String locator, @NotNull String method) throws InterruptedException {
         AndroidElement element;
         switch (method.toUpperCase()){
             case "ID":
@@ -56,6 +58,50 @@ public class AppiumTestSupport {
         }
         return null;
     }
+
+    public static @Nullable List<AndroidElement> locateElements(@NotNull AndroidDriver<?> driver, @NotNull String locator, @NotNull String method) throws InterruptedException {
+        List<AndroidElement> elements;
+        switch (method.toUpperCase()){
+            case "ID":
+                elements = (List<AndroidElement>) driver.findElementsById(locator);
+                if(elements.get(0).isDisplayed()){
+                    return elements;
+                }
+                else{
+                    Thread.sleep(10000);
+                    return (List<AndroidElement>) driver.findElementsById(locator);
+                }
+            case "ACCESSIBLEID":
+                elements = (List<AndroidElement>) driver.findElementsByAccessibilityId(locator);
+                if(elements.get(0).isDisplayed()){
+                    return elements;
+                }
+                else{
+                    Thread.sleep(10000);
+                    return (List<AndroidElement>) driver.findElementsByAccessibilityId(locator);
+                }
+            case "XPATH":
+                elements = (List<AndroidElement>) driver.findElementsByXPath(locator);
+                if(elements.get(0).isDisplayed()){
+                    return elements;
+                }
+                else{
+                    Thread.sleep(10000);
+                    return (List<AndroidElement>) driver.findElementsByXPath(locator);
+                }
+            case "CLASSNAME":
+                elements = (List<AndroidElement>) driver.findElementsByClassName(locator);
+                if(elements.get(0).isDisplayed()){
+                    return elements;
+                }
+                else{
+                    Thread.sleep(10000);
+                    return (List<AndroidElement>) driver.findElementsByClassName(locator);
+                }
+        }
+        return null;
+    }
+
 
     public static void buttonClick(@NotNull AndroidElement button){
         button.click();
@@ -147,4 +193,6 @@ public class AppiumTestSupport {
     public static String getCurrentActivity(@NotNull AndroidDriver<?> driver){
         return driver.currentActivity();
     }
+
+    public static void hideKeyboard(AndroidDriver<?> driver){ driver.hideKeyboard(); }
 }

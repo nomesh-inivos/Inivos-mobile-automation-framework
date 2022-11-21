@@ -151,6 +151,46 @@ public class MobileTestSuite extends BaseTest{
         //Log Text Box
         test.testLogTexBox();
     }
+    @Test
+    public void viewTests(){
+        ViewTests test = new ViewTests(driver,"io.appium.android.apis");
+        //Views AutoComplete
+        //AutoComplete ScreenTop Test
+        test.testAutoCompleteScreenTop();
+        //AutoComplete Scroll Test
+        test.testAutoCompleteScroll();
+        //AutoComplete Multiple Test
+        test.testAutoCompleteMultiple();
+
+        //Views ToggleButton
+        test.testToggleButton();
+
+        //Views Chronometer
+        //Start,Stop,Reset Time Test
+        test.testChronometerStart();
+
+        //Views DateWidget
+        //Date Widget Dialog date,time,spinner
+        test.testDateWidget();
+
+        //Views Drag and Drop
+        test.testDragDrop();
+
+        //Views Expandable Lists
+        test.testExpandableList();
+
+        //Views Image Switcher
+        test.testImageSwitcher();
+
+        //Views ScrollBars Style
+        test.testScrollBars();
+
+        //Views Rating Bar
+        test.testRatingBar();
+
+        //Views Sliding Picker
+        test.testSlidingPicker();
+    }
 
     @AfterClass
     public void tearDown() {

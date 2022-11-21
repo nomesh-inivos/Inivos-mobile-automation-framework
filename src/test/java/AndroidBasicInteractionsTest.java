@@ -142,43 +142,43 @@ public class AndroidBasicInteractionsTest extends BaseTest {
     }
 
     @Test
-    public void viewTests(){
+    public void viewTests() throws InterruptedException{
         ViewTests test = new ViewTests(driver,PACKAGE);
         //Views AutoComplete
         //AutoComplete ScreenTop Test
         test.testAutoCompleteScreenTop();
-        //AutoComplete Scroll Test
-        test.testAutoCompleteScroll();
-        //AutoComplete Multiple Test
-        test.testAutoCompleteMultiple();
-
-        //Views ToggleButton
-        test.testToggleButton();
-
-        //Views Chronometer
-        //Start,Stop,Reset Time Test
-        test.testChronometerStart();
-
-        //Views DateWidget
-        //Date Widget Dialog date,time,spinner
-        test.testDateWidget();
-
-        //Views Drag and Drop
-        test.testDragDrop();
-
-        //Views Expandable Lists
-        test.testExpandableList();
-
-        //Views Image Switcher
-        test.testImageSwitcher();
-
-        //Views ScrollBars Style
-        test.testScrollBars();
-
-        //Views Rating Bar
-        test.testRatingBar();
-
-        //Views Sliding Picker
-        test.testSlidingPicker();
+//        //AutoComplete Scroll Test
+//        test.testAutoCompleteScroll();
+//        //AutoComplete Multiple Test
+//        test.testAutoCompleteMultiple();
+//
+//        //Views ToggleButton
+//        test.testToggleButton();
+//
+//        //Views Chronometer
+//        //Start,Stop,Reset Time Test
+//        test.testChronometerStart();
+//
+//        //Views DateWidget
+//        //Date Widget Dialog date,time,spinner
+//        test.testDateWidget();
+//
+//        //Views Drag and Drop
+//        test.testDragDrop();
+//
+//        //Views Expandable Lists
+//        test.testExpandableList();
+//
+//        //Views Image Switcher
+//        test.testImageSwitcher();
+//
+//        //Views ScrollBars Style
+//        test.testScrollBars();
+//
+//        //Views Rating Bar
+//        test.testRatingBar();
+//
+//        //Views Sliding Picker
+//        test.testSlidingPicker();
     }
 }

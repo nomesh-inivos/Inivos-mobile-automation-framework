@@ -31,7 +31,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ViewTests {
-    private AndroidDriver<WebElement> driver;
+    private AndroidDriver<?> driver;
     private final String AUTOCOMPLETE_SCREENTOP_TEST = ".view.AutoComplete1";
     private final String AUTOCOMPLETE_SCROLL_TEST = ".view.AutoComplete3";
     private final String AUTOCOMPLETE_Multiple_TEST = ".view.AutoComplete6";
@@ -46,7 +46,7 @@ public class ViewTests {
     private final String SLIDING_PICKER_TEST = ".view.CustomPicker1";
     private final String PACKAGE;
 
-    public ViewTests(AndroidDriver<WebElement> driver,String packageName){
+    public ViewTests(AndroidDriver<?> driver,String packageName){
         this.PACKAGE = packageName;
         this.driver = driver;
     }
@@ -160,7 +160,7 @@ public class ViewTests {
         AndroidElement ChronometerStop = (AndroidElement) driver.findElementById("io.appium.android.apis:id/stop");
 
         new TouchAction<>(driver).tap(TapOptions.tapOptions()
-                .withElement(ElementOption.element(ChronometerStart)))
+                        .withElement(ElementOption.element(ChronometerStart)))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(5000)))
                 .perform().tap(TapOptions.tapOptions()
                         .withElement(ElementOption.element(ChronometerStop)))
@@ -262,20 +262,20 @@ public class ViewTests {
     public void testExpandableList(){
         driver.startActivity(new Activity(PACKAGE,EXPANDABLE_LIST_TEST));
 
-        List<WebElement> ListElements = driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+        List<AndroidElement> ListElements = (List<AndroidElement>) driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
 
         int original = ListElements.size();
 
         ListElements.get(0).click();
 
-        ListElements = driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+        ListElements = (List<AndroidElement>) driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
         int extented = ListElements.size();
 
         Assert.assertEquals(extented,8);
 
         ListElements.get(0).click();
 
-        ListElements = driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+        ListElements = (List<AndroidElement>) driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
         int subtrcated = ListElements.size();
 
         Assert.assertEquals(subtrcated,original);
