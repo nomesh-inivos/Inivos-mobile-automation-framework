@@ -4,20 +4,23 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.ScreenOrientation;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
 
 public class AppiumTestSupport {
+
+
     public static @Nullable AndroidElement locateElement(@NotNull AndroidDriver<?> driver, @NotNull String locator, @NotNull String method) throws InterruptedException {
         AndroidElement element;
         switch (method.toUpperCase()){
@@ -104,7 +107,6 @@ public class AppiumTestSupport {
         return null;
     }
 
-
     public static void buttonClick(@NotNull AndroidElement button){
         button.click();
     }
@@ -161,12 +163,20 @@ public class AppiumTestSupport {
                 .release().perform();
     }
 
-    public static void tapOnCoordinate(AndroidDriver<?> driver, Point tap){
-        new TouchAction<>(driver).tap(PointOption.point(tap)).perform();
+    public static void dragNDrop(AndroidDriver<?> driver, AndroidElement startElement, AndroidElement endElement){
+        new TouchAction<>(driver)
+                .longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(startElement)))
+                .moveTo(PointOption.point(endElement.getCenter().getX(),endElement.getCenter().getY()))
+                .release().perform();
+
     }
 
-    public static void tapOnCoordinate(AndroidDriver<?> driver, int x, int y){
-        new TouchAction<>(driver).tap(PointOption.point(x,y)).perform();
+    public static TouchAction tapOnCoordinate(AndroidDriver<?> driver, Point tap){
+        return new TouchAction<>(driver).tap(PointOption.point(tap)).perform();
+    }
+
+    public static TouchAction tapOnCoordinate(AndroidDriver<?> driver, int x, int y){
+        return new TouchAction<>(driver).tap(PointOption.point(x,y)).perform();
     }
 
     public static TouchAction tapOnElement(AndroidDriver<?> driver, AndroidElement element){
@@ -203,8 +213,15 @@ public class AppiumTestSupport {
         input.sendKeys(text);
     }
 
-    public static String getElementText(@NotNull AndroidElement element){
-        return element.getText();
+    public static String getElementText(@NotNull AndroidElement element) throws InterruptedException {
+       try{
+           return element.getText();
+       }
+       catch (StaleElementReferenceException e){
+           Thread.sleep(5000);
+           return element.getText();
+       }
+
     }
 
     public static String getCurrentActivity(@NotNull AndroidDriver<?> driver){
