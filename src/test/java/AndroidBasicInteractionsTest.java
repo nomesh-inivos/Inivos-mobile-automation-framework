@@ -94,11 +94,6 @@ public class AndroidBasicInteractionsTest extends BaseTest {
         }
     }
 
-//    @BeforeMethod
-//    public void beforeMethodTest(){
-//        super.beforeMethodTest("Android",n);
-//    }
-
 
     @Test()
     public void testSendKeys() {
@@ -134,7 +129,7 @@ public class AndroidBasicInteractionsTest extends BaseTest {
     }
 
     @Test
-    public void textTests(){
+    public void textTests() throws InterruptedException {
         TextTests test = new TextTests(driver,PACKAGE);
         //Key Event Text
         test.testKeyPress();

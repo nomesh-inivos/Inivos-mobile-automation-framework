@@ -1,27 +1,21 @@
 import com.inivos.config.Constants;
+import io.appium.java_client.android.Activity;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import org.openqa.selenium.Point;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.net.URL;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.testng.log4testng.Logger;
@@ -39,7 +33,7 @@ public class MobileTestSuite extends BaseTest{
      * This method is used for initializing the Log4j and Config.properties
      */
     @BeforeSuite
-    public void startSuite() {
+    public static void startSuite() {
         log = Logger.getLogger(MobileTestSuite.class);
         log.info("Test Started successfully");
     }
@@ -123,8 +117,31 @@ public class MobileTestSuite extends BaseTest{
     }
 
     @Test
-    public void textTests(){
-        TextTests test = new TextTests(driver,Constants.APP_PACKAGE);
+    public void testAutoCompleteScreenTop() throws InterruptedException{
+        //Opening autocomplete screentop activity
+        driver.startActivity(new Activity("io.appium.android.apis",".view.AutoComplete1"));
+
+        AndroidElement TextInput = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/edit","Id");
+        System.out.println(TextInput.isDisplayed());
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.S);
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.R);
+
+        int x = TextInput.getCenter().x;
+        int y = TextInput.getCenter().y + 100;
+
+        AppiumTestSupport.tapOnCoordinate(driver,new Point(x,y));
+
+        String actual = AppiumTestSupport.getElementText(TextInput);
+        String expected = "Sri Lanka";
+
+        driver.hideKeyboard();
+
+        Assert.assertEquals(actual,expected);
+    }
+
+    @Test
+    public void textTests() throws InterruptedException {
+        TextTests test = new TextTests(driver,"io.appium.android.apis");
         //Key Event Text
         test.testKeyPress();
         //Click Browser Link in TextView
@@ -138,7 +155,7 @@ public class MobileTestSuite extends BaseTest{
     @AfterClass
     public void tearDown() {
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
         }
     }
 }

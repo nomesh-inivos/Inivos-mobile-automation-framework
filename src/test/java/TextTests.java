@@ -1,11 +1,8 @@
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.Point;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,21 +21,20 @@ public class TextTests {
     }
 
     @Test
-    public void testKeyPress() throws StringIndexOutOfBoundsException{
+    public void testKeyPress() throws StringIndexOutOfBoundsException, InterruptedException {
         //Opening KeyEventText Activity
         driver.startActivity(new Activity(PACKAGE,KEY_EVENT_ACTIVITY));
 
         //Click on the TextView
-
-        AndroidElement TextView = (AndroidElement) driver.findElementById("io.appium.android.apis:id/text");
-        driver.pressKey(new KeyEvent(AndroidKey.A));
-        String text = TextView.getText();
+        AndroidElement TextView = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/text","id");
+        AppiumTestSupport.pressAndroidKey(driver,AndroidKey.A);
+        String text = AppiumTestSupport.getElementText(TextView);
         String actual = text.substring(0,12);
         System.out.println(actual);
         String expected = "[keycode=29]";
         Assert.assertEquals(actual,expected);
         //clear text
-        driver.findElementById("io.appium.android.apis:id/clear").click();
+        AppiumTestSupport.buttonClick(AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/clear","id"));
     }
 
     @Test
@@ -48,7 +44,7 @@ public class TextTests {
 //        AndroidElement link = (AndroidElement) driver.findElementById("io.appium.android.apis:id/text1");
 //        link.findElementByXPath("//*[contains(.,'http://google.com')]").click();
         //Tap http:www.google.com link
-        driver.performTouchAction(new TouchAction<>(driver).tap(PointOption.point(246,400)).perform());
+        AppiumTestSupport.tapOnCoordinate(driver,new Point(246,400));
 
         String expected = "org.chromium.chrome.browser.firstrun.FirstRunActivity";
         String actual = driver.currentActivity();
@@ -62,24 +58,21 @@ public class TextTests {
 //        AndroidElement link = (AndroidElement) driver.findElementById("io.appium.android.apis:id/text1");
 //        link.findElementByXPath("//*[contains(.,'http://google.com')]").click();
         //tap on a phone number
-        driver.performTouchAction(new TouchAction<>(driver)
-                .tap(PointOption.point(333,518)).perform());
-
+        AppiumTestSupport.tapOnCoordinate(driver,new Point(333,518));
         String expected = ".main.impl.MainActivity";
-        String actual = driver.currentActivity();
+        String actual = AppiumTestSupport.getCurrentActivity(driver);
         Assert.assertEquals(actual,expected);
     }
 
     @Test
-    public void testLogTexBox(){
+    public void testLogTexBox() throws InterruptedException {
         driver.startActivity(new Activity(PACKAGE,LOG_TEXT_ACTIVITY));
 
-        AndroidElement AddButton = (AndroidElement) driver.findElementById("io.appium.android.apis:id/add");
-        AddButton.click();
-        AddButton.click();
+        AndroidElement AddButton = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/add","id");
+        AppiumTestSupport.buttonMultipleClick(AddButton,2);
 
-        AndroidElement LogView = (AndroidElement) driver.findElementById("io.appium.android.apis:id/text");
-        String text = LogView.getText();
+        AndroidElement LogView = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/text","id");
+        String text = AppiumTestSupport.getElementText(LogView);
         int actual = text.split("\n").length;
         Assert.assertEquals(actual,2);
 
