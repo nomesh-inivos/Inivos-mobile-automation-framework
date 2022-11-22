@@ -1,0 +1,18 @@
+{
+  "platformName": "platform",
+  "platformVersion": "version",
+  "deviceName": "device",
+  "udid": "udid",
+  "ios": {
+    "bundleId": "ios_bundled_id"
+  },
+  "android": {
+    "appActivity": "activity",
+    "appPackage": "package",
+    "avd": "avd"
+  },
+  "autoLaunch": true,
+  "app": "path",
+  "newCommandTimeout": "commandTimeout",
+  "automationName": "automationName"
+}

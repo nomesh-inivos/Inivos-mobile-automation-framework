@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Default Suite" guice-stage="DEVELOPMENT" verbose="0">
-    <test name="Inivos-mobile-automation-framework(failed)">
-        <parameter name="platform" value="ANDROID"/>
-        <classes>
-            <class name="MobileTestSuite">
-            </class> <!-- MobileTestSuite -->
-        </classes>
-    </test> <!-- Inivos-mobile-automation-framework(failed) -->
-</suite> <!-- Default Suite -->
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">-->
+<!--<suite name="Default Suite" guice-stage="DEVELOPMENT" verbose="0">-->
+<!--    <test name="Inivos-mobile-automation-framework(failed)">-->
+<!--        <parameter name="platform" value="ANDROID"/>-->
+<!--        <classes>-->
+<!--            <class name="MobileTestSuite">-->
+<!--            </class> &lt;!&ndash; MobileTestSuite &ndash;&gt;-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Inivos-mobile-automation-framework(failed) &ndash;&gt;-->
+<!--</suite> &lt;!&ndash; Default Suite &ndash;&gt;-->

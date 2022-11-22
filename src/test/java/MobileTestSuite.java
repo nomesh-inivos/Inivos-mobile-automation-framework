@@ -113,60 +113,6 @@ public class MobileTestSuite extends BaseTest {
         }
     }
 
-//    @Test
-//    public void textTests() throws InterruptedException {
-//        TextTests test = new TextTests(driver,"io.appium.android.apis");
-//        //Key Event Text
-//        test.testKeyPress();
-//        //Click Browser Link in TextView
-//        test.testTextLinksBrowser();
-//        //Click Phone Number in TextView
-//        test.testTextLinksPhone();
-//        //Log Text Box
-//        test.testLogTexBox();
-//    }
-
-    @Test
-    public void viewTests() throws InterruptedException {
-        ViewTests test = new ViewTests(driver,"io.appium.android.apis");
-        //Views AutoComplete
-        //AutoComplete ScreenTop Test
-//        test.testAutoCompleteScreenTop();
-//        //AutoComplete Scroll Test
-//        test.testAutoCompleteScroll();
-//        //AutoComplete Multiple Test
-//        test.testAutoCompleteMultiple();
-//
-//        //Views ToggleButton
-//        test.testToggleButton();
-//
-//        //Views Chronometer
-//        //Start,Stop,Reset Time Test
-//        test.testChronometerStart();
-//
-//        //Views DateWidget
-//        //Date Widget Dialog date,time,spinner
-//        test.testDateWidget();
-//
-//        //Views Drag and Drop
-//        test.testDragDrop();
-//
-//        //Views Expandable Lists
-//        test.testExpandableList();
-//
-        //Views Image Switcher
-        test.testImageSwitcher();
-//
-//        //Views ScrollBars Style
-//        test.testScrollBars();
-//
-//        //Views Rating Bar
-//        test.testRatingBar();
-//
-//        //Views Sliding Picker
-//        test.testSlidingPicker();
-    }
-
     @AfterClass
     public void tearDown() {
         if (driver != null) {

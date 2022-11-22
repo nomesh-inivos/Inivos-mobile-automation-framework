@@ -7,14 +7,12 @@
     <list default="true" id="55f9c6c3-a539-4c76-9ee9-393aa7189aba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/BaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AppiumTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/AppiumTestSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/BaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AndroidManifest.xml.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TextTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TextTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TextTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +73,11 @@
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.23421589&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\TharinduKanchana\IdeaProjects\Inivos-mobile-automation-framework\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager" selected="TestNG./Users/nomeshd/POC Projects/UNICENTA/Inivos-mobile-automation-framework/testng.xml">
     <configuration name="MobileTestSuite" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Inivos-mobile-automation-framework" />

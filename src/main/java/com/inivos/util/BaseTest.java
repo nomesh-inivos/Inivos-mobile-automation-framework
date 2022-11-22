@@ -1,14 +1,17 @@
 package com.inivos.util;
 
+import com.google.gson.JsonParser;
 import com.inivos.config.Constants;
 import com.inivos.driver.AppiumDriverFactory;
 import com.inivos.driver.MobileDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import org.testng.*;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -29,6 +32,12 @@ public abstract class BaseTest {
     private static ExtentReports extent;
     private static ExtentHtmlReporter htmlReporter;
     private static ExtentTest logger;
+
+//    public void configSetup() throws IOException {
+//        URL inputUrl = this.getClass().getResource("config.json");
+//        File dest = new File("config.json");
+//        FileUtils.copyURLToFile(inputUrl, dest);
+//    }
 
     @BeforeTest
     public void beforeTest() {
@@ -55,6 +64,7 @@ public abstract class BaseTest {
 
     @BeforeSuite
     public void globalSetup () throws IOException {
+        //configSetup();
         service = AppiumDriverLocalService.buildDefaultService();
         service.start();
     }
