@@ -1,34 +1,21 @@
+import com.inivos.util.AppiumTestSupport;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.touch.LongPressOptions;
-import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
-import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
-import org.openqa.selenium.ScreenOrientation;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import javax.inject.Scope;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 public class ViewTests {
@@ -188,7 +175,7 @@ public class ViewTests {
     }
 
     @Test
-    public void testDateWidget(){
+    public void testDateWidget() throws InterruptedException {
         //Open Views Date Widget Activity
         driver.startActivity(new Activity(PACKAGE, DATEWIDGET_TEST));
 
@@ -219,13 +206,15 @@ public class ViewTests {
         String ContentDescFormatted = today.getMonthValue() + "/" + newDay + "/" + today.getYear();
         System.out.println(ContentDesc);
         //Select Date
-        driver.findElementByAccessibilityId(ContentDesc).click();
+        AppiumTestSupport.locateElement(driver,ContentDesc,"AccessibilityId").click();
         //Click Ok
         driver.findElementById("android:id/button1").click();
 
-        WebDriverWait wait = new WebDriverWait(driver,20);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("io.appium.android.apis:id/dateDisplay")));
-        date = Date.getText().split(" ")[0].replaceAll("-","/");
+//        WebDriverWait wait = new WebDriverWait(driver,20);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("io.appium.android.apis:id/dateDisplay")));
+//        date = Date.getText().split(" ")[0].replaceAll("-","/");
+
+        date = AppiumTestSupport.getElementText(Date).split(" ")[0].replaceAll("-","/");
 
         try{
             LocalDate ld = LocalDate.parse( date , f );
@@ -246,44 +235,46 @@ public class ViewTests {
         driver.findElementById("android:id/button1").click();
 
         //Time Text
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("io.appium.android.apis:id/dateDisplay")));
-        String time = Date.getText().split(" ")[1];
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("io.appium.android.apis:id/dateDisplay")));
+//        String time = Date.getText().split(" ")[1];
+
+        String time = AppiumTestSupport.getElementText(Date).split(" ")[1];
+
         Assert.assertEquals(time,"09:45");
     }
 
     @Test
-    public void testDragDrop(){
+    public void testDragDrop() throws InterruptedException {
         //Opening Views Drag and drop Activity
         driver.startActivity(new Activity(PACKAGE,DRAGDROP_TEST));
 
-        AndroidElement dot1 = (AndroidElement) driver.findElementById("io.appium.android.apis:id/drag_dot_1");
-        AndroidElement dot2 = (AndroidElement) driver.findElementById("io.appium.android.apis:id/drag_dot_2");
+        AndroidElement dot1 = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/drag_dot_1","id");
+        AndroidElement dot2 = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/drag_dot_2","id");
 
-        new TouchAction<>(driver).longPress(PointOption.point(dot1.getCenter().x,dot1.getCenter().y)).moveTo(PointOption.point(dot2.getCenter().x,dot2.getCenter().y)).release().perform();
-
-        String result = driver.findElementById("io.appium.android.apis:id/drag_result_text").getText();
+        AppiumTestSupport.dragNDrop(driver,dot1,dot2);
+        String result = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/drag_result_text","id").getText();
 
         Assert.assertEquals(result,"Dropped!");
     }
 
     @Test
-    public void testExpandableList(){
+    public void testExpandableList() throws InterruptedException {
         driver.startActivity(new Activity(PACKAGE,EXPANDABLE_LIST_TEST));
 
-        List<AndroidElement> ListElements = (List<AndroidElement>) driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+        List<AndroidElement> ListElements = AppiumTestSupport.locateElements(driver,"//android.widget.ExpandableListView/android.widget.TextView","xpath");
 
         int original = ListElements.size();
 
         ListElements.get(0).click();
 
-        ListElements = (List<AndroidElement>) driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+        ListElements = AppiumTestSupport.locateElements(driver,"//android.widget.ExpandableListView/android.widget.TextView","xpath");
         int extented = ListElements.size();
 
         Assert.assertEquals(extented,8);
 
         ListElements.get(0).click();
 
-        ListElements = (List<AndroidElement>) driver.findElementsByXPath("//android.widget.ExpandableListView/android.widget.TextView");
+        ListElements = AppiumTestSupport.locateElements(driver,"//android.widget.ExpandableListView/android.widget.TextView","xpath");
         int subtrcated = ListElements.size();
 
         Assert.assertEquals(subtrcated,original);
@@ -291,23 +282,22 @@ public class ViewTests {
     }
 
     @Test
-    public void testImageSwitcher(){
+    public void testImageSwitcher() throws InterruptedException {
         //Opening Image Switcher Activity
         driver.startActivity(new Activity(PACKAGE,IMAGE_SWITCHER_TEST));
 
         //Image Gallery
-        AndroidElement Gallery = (AndroidElement) driver.findElementById("io.appium.android.apis:id/gallery");
+        AndroidElement Gallery = AppiumTestSupport.locateElement(driver,"io.appium.android.apis:id/gallery","id");
 
-        //ImageView
-        AndroidElement Image4 = (AndroidElement) driver.findElementByXPath("//android.widget.Gallery/android.widget.ImageView[4]");
-        Image4.click();
-
-
-        new TouchAction<>(driver).longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(Image4))).perform();
-
-        Image4 = (AndroidElement) driver.findElementByXPath("//android.widget.Gallery/android.widget.ImageView[5]");
-
-        new TouchAction<>(driver).longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(Image4))).perform();
+        AppiumTestSupport.swipeByPercentage(driver,0.9,0.4,0.98,"Horizontal",3000);
+//        //ImageView
+//        AndroidElement Image4 = com.inivos.util.AppiumTestSupport.locateElement(driver,"//android.widget.Gallery/android.widget.ImageView[4]","xpath");
+//
+//        com.inivos.util.AppiumTestSupport.tapOnElement(driver, Image4);
+//
+//        Image4 = com.inivos.util.AppiumTestSupport.locateElement(driver,"//android.widget.Gallery/android.widget.ImageView[5]","xpath");
+//
+//        com.inivos.util.AppiumTestSupport.tapOnElement(driver, Image4);
     }
 
     @Test

@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="55f9c6c3-a539-4c76-9ee9-393aa7189aba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AppiumTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppiumTestSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AppiumTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/AppiumTestSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/BaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TextTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TextTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
@@ -64,22 +70,12 @@
     &quot;project.structure.last.edited&quot;: &quot;Suggestions&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.30114943&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propGUI&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.23421589&quot;
   }
 }</component>
   <component name="RunManager" selected="TestNG./Users/nomeshd/POC Projects/UNICENTA/Inivos-mobile-automation-framework/testng.xml">
-    <configuration name="AndroidBasicInteractionsTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Inivos-mobile-automation-framework" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AndroidBasicInteractionsTest" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MobileTestSuite" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Inivos-mobile-automation-framework" />
       <option name="PACKAGE_NAME" value="" />
@@ -115,6 +111,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ViewTests.testImageSwitcher" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Inivos-mobile-automation-framework" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ViewTests" />
+      <option name="METHOD_NAME" value="testImageSwitcher" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="/Users/nomeshd/POC Projects/UNICENTA/Inivos-mobile-automation-framework/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Inivos-mobile-automation-framework" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
@@ -128,10 +136,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG./Users/nomeshd/POC Projects/UNICENTA/Inivos-mobile-automation-framework/testng.xml" />
+        <item itemvalue="TestNG.ViewTests.testImageSwitcher" />
         <item itemvalue="TestNG.MobileTestSuite.testAutoCompleteScreenTop" />
         <item itemvalue="TestNG.MobileTestSuite" />
         <item itemvalue="TestNG.MobileTestSuite.textTests" />
-        <item itemvalue="TestNG.AndroidBasicInteractionsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -213,12 +221,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="7" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java</url>
-          <line>145</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

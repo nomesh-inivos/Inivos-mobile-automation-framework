@@ -1,4 +1,5 @@
-import android.widget.Switch;
+package com.inivos.util;
+
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -19,8 +20,6 @@ import java.time.Duration;
 import java.util.List;
 
 public class AppiumTestSupport {
-
-
     public static @Nullable AndroidElement locateElement(@NotNull AndroidDriver<?> driver, @NotNull String locator, @NotNull String method) throws InterruptedException {
         AndroidElement element;
         switch (method.toUpperCase()){
@@ -127,15 +126,14 @@ public class AppiumTestSupport {
                 .moveTo(PointOption.point(endPoint)).release().perform();
     }
 
-    public static void swipeByPercentage (@NotNull AndroidDriver<?> driver, double startPercentage, double endPercentage, double anchorPercentage, @NotNull String direction) {
+    public static @Nullable TouchAction swipeByPercentage (@NotNull AndroidDriver<?> driver, double startPercentage, double endPercentage, double anchorPercentage, @NotNull String direction) {
         Dimension size = driver.manage().window().getSize();
         if(direction.equalsIgnoreCase("Horizontal")){
             int anchor = (int) (size.height * anchorPercentage);
             int startPoint = (int) (size.width * startPercentage);
             int endPoint = (int) (size.width * endPercentage);
-            new TouchAction(driver)
+            return new TouchAction(driver)
                     .press(PointOption.point(startPoint, anchor))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(endPoint, anchor))
                     .release().perform();
         }
@@ -143,12 +141,37 @@ public class AppiumTestSupport {
             int anchor = (int) (size.width * anchorPercentage);
             int startPoint = (int) (size.height * startPercentage);
             int endPoint = (int) (size.height * endPercentage);
-            new TouchAction(driver)
+            return new TouchAction(driver)
                     .press(PointOption.point(startPoint, anchor))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(endPoint, anchor))
                     .release().perform();
         }
+        return null;
+    }
+
+    public static @Nullable TouchAction swipeByPercentage (@NotNull AndroidDriver<?> driver, double startPercentage, double endPercentage, double anchorPercentage, @NotNull String direction,long waitMillis) {
+        Dimension size = driver.manage().window().getSize();
+        if(direction.equalsIgnoreCase("Horizontal")){
+            int anchor = (int) (size.height * anchorPercentage);
+            int startPoint = (int) (size.width * startPercentage);
+            int endPoint = (int) (size.width * endPercentage);
+            return new TouchAction(driver)
+                    .press(PointOption.point(startPoint, anchor))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
+                    .moveTo(PointOption.point(endPoint, anchor))
+                    .release().perform();
+        }
+        else if(direction.equalsIgnoreCase("Vertical")){
+            int anchor = (int) (size.width * anchorPercentage);
+            int startPoint = (int) (size.height * startPercentage);
+            int endPoint = (int) (size.height * endPercentage);
+            return new TouchAction(driver)
+                    .press(PointOption.point(startPoint, anchor))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
+                    .moveTo(PointOption.point(endPoint, anchor))
+                    .release().perform();
+        }
+        return null;
     }
 
     public static void swipeByElements (AndroidDriver<?> driver, @NotNull AndroidElement startElement, @NotNull AndroidElement endElement) {
@@ -202,7 +225,7 @@ public class AppiumTestSupport {
 
     public static TouchAction longPressOnElement(AndroidDriver<?> driver, @NotNull AndroidElement element){
         return new TouchAction<>(driver)
-                .longPress(PointOption.point(element.getCenter().x,element.getCenter().y)).perform();
+                .longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element))).perform();
     }
 
     public static void pressAndroidKey(@NotNull AndroidDriver<?> driver, AndroidKey key){

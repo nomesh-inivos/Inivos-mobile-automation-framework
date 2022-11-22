@@ -1,9 +1,12 @@
+package com.inivos.util;
+
 import com.inivos.config.Constants;
 import com.inivos.driver.AppiumDriverFactory;
 import com.inivos.driver.MobileDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+import org.testng.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,14 +42,14 @@ public abstract class BaseTest {
         extent.setSystemInfo("Automation Tester", "Inivos - QA Department");
     }
 
-    @BeforeMethod
-    @Parameters(value={"platform"})
-    public void beforeMethodTest(String platform, Method testMethod) {
-        logger = extent.createTest(testMethod.getName());
-        driver = AppiumDriverFactory.getDriver(platform);
-        //driver.get(Constants.PLATFORM);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
+//    @BeforeMethod
+//    @Parameters(value={"platform"})
+//    public void beforeMethodTest(String platform, Method testMethod) {
+//        logger = extent.createTest(testMethod.getName());
+//        driver = AppiumDriverFactory.getDriver(platform);
+//        //driver.get(Constants.PLATFORM);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//    }
 
     private static AppiumDriverLocalService service;
 

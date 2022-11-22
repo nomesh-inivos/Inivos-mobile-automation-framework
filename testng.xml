@@ -5,18 +5,6 @@
         <parameter name="platform" value="ANDROID"/>
         <classes>
             <class name="MobileTestSuite">
-                <methods>
-                    <include name="viewTests" />
-                    <include name="textTests" />
-                    <include name="beforeTest" />
-                    <include name="startSuite" />
-                    <include name="startTest" />
-                    <include name="startAppium" />
-                    <include name="startApp" />
-<!--                    <include name="beforeMethodTest"/>-->
-                    <include name="globalSetup" />
-                    <include name="tearDown" />
-                </methods>
             </class> <!-- MobileTestSuite -->
         </classes>
     </test> <!-- Inivos-mobile-automation-framework(failed) -->

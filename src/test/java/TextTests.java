@@ -1,3 +1,4 @@
+import com.inivos.util.AppiumTestSupport;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;

@@ -1,3 +1,4 @@
+import com.inivos.util.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -6,7 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
@@ -15,8 +15,6 @@ import io.appium.java_client.android.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 public class AndroidBasicInteractionsTest extends BaseTest {

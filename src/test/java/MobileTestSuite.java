@@ -1,8 +1,5 @@
 import com.inivos.config.Constants;
-import io.appium.java_client.android.Activity;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import org.openqa.selenium.Point;
-import org.testng.Assert;
+import com.inivos.util.BaseTest;
 import org.testng.annotations.*;
 
 import java.net.URL;
@@ -20,7 +17,7 @@ import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.testng.log4testng.Logger;
 
-public class MobileTestSuite extends BaseTest{
+public class MobileTestSuite extends BaseTest {
 
     public static Logger log;
     public static ExtentHtmlReporter htmlReporter;
@@ -88,7 +85,7 @@ public class MobileTestSuite extends BaseTest{
             cap.setCapability("autoLaunch", true);
             cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 500);
             cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
-
+            cap.setCapability("avd","Pixel_2_API_30");
             // Declaring the driver as "Android driver" with the Host and Port number to communicate with Appium desktop
             driver = new AndroidDriver<AndroidElement>(new URL(Constants.APPIUM_URL), cap);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -105,7 +102,7 @@ public class MobileTestSuite extends BaseTest{
 
     @BeforeMethod
     public static void openApp() {
-        startTest();
+        //startTest();
         log.info("Test case started successfully");
         log.info("Trying to launch the Application under Test");
         try{
@@ -157,8 +154,8 @@ public class MobileTestSuite extends BaseTest{
 //        //Views Expandable Lists
 //        test.testExpandableList();
 //
-//        //Views Image Switcher
-//        test.testImageSwitcher();
+        //Views Image Switcher
+        test.testImageSwitcher();
 //
 //        //Views ScrollBars Style
 //        test.testScrollBars();
