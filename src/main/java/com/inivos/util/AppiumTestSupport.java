@@ -13,8 +13,6 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
@@ -24,39 +22,39 @@ public class AppiumTestSupport {
         AndroidElement element;
         switch (method.toUpperCase()){
             case "ID":
-                element = (AndroidElement) driver.findElementById(locator);
-                if(element.isDisplayed()){
+                try{
+                    element = (AndroidElement) driver.findElementById(locator);
                     return element;
                 }
-                else{
-                    Thread.sleep(10000);
+                catch (StaleElementReferenceException e){
+                    Thread.sleep(5000);
                     return (AndroidElement) driver.findElementById(locator);
                 }
             case "ACCESSIBILITYID":
-                element = (AndroidElement) driver.findElementByAccessibilityId(locator);
-                if(element.isDisplayed()){
+                try{
+                    element = (AndroidElement) driver.findElementByAccessibilityId(locator);
                     return element;
                 }
-                else{
-                    Thread.sleep(10000);
+                catch (StaleElementReferenceException e){
+                    Thread.sleep(5000);
                     return (AndroidElement) driver.findElementByAccessibilityId(locator);
                 }
             case "XPATH":
-                element = (AndroidElement) driver.findElementByXPath(locator);
-                if(element.isDisplayed()){
+                try{
+                    element = (AndroidElement) driver.findElementByXPath(locator);
                     return element;
                 }
-                else{
-                    Thread.sleep(10000);
+                catch (StaleElementReferenceException e){
+                    Thread.sleep(5000);
                     return (AndroidElement) driver.findElementByXPath(locator);
                 }
             case "CLASSNAME":
-                element = (AndroidElement) driver.findElementByClassName(locator);
-                if(element.isDisplayed()){
+                try{
+                    element = (AndroidElement) driver.findElementByClassName(locator);
                     return element;
                 }
-                else{
-                    Thread.sleep(10000);
+                catch (StaleElementReferenceException e){
+                    Thread.sleep(5000);
                     return (AndroidElement) driver.findElementByClassName(locator);
                 }
         }
@@ -67,39 +65,41 @@ public class AppiumTestSupport {
         List<AndroidElement> elements;
         switch (method.toUpperCase()){
             case "ID":
-                elements = (List<AndroidElement>) driver.findElementsById(locator);
-                if(elements.get(0).isDisplayed()){
+                try{
+                    elements = (List<AndroidElement>) driver.findElementsById(locator);
                     return elements;
                 }
-                else{
-                    Thread.sleep(10000);
+                catch (Exception e){
+                    Thread.sleep(5000);
                     return (List<AndroidElement>) driver.findElementsById(locator);
                 }
             case "ACCESSIBILITYID":
-                elements = (List<AndroidElement>) driver.findElementsByAccessibilityId(locator);
-                if(elements.get(0).isDisplayed()){
+                try{
+                    elements = (List<AndroidElement>) driver.findElementsByAccessibilityId(locator);
                     return elements;
                 }
-                else{
-                    Thread.sleep(10000);
+                catch (Exception e){
+                    Thread.sleep(5000);
                     return (List<AndroidElement>) driver.findElementsByAccessibilityId(locator);
                 }
+
             case "XPATH":
-                elements = (List<AndroidElement>) driver.findElementsByXPath(locator);
-                if(elements.get(0).isDisplayed()){
+                try{
+                    elements = (List<AndroidElement>) driver.findElementsByXPath(locator);
                     return elements;
                 }
-                else{
-                    Thread.sleep(10000);
+                catch (Exception e){
+                    Thread.sleep(5000);
                     return (List<AndroidElement>) driver.findElementsByXPath(locator);
                 }
+
             case "CLASSNAME":
-                elements = (List<AndroidElement>) driver.findElementsByClassName(locator);
-                if(elements.get(0).isDisplayed()){
+                try{
+                    elements = (List<AndroidElement>) driver.findElementsByClassName(locator);
                     return elements;
                 }
-                else{
-                    Thread.sleep(10000);
+                catch (Exception e){
+                    Thread.sleep(5000);
                     return (List<AndroidElement>) driver.findElementsByClassName(locator);
                 }
         }
@@ -142,8 +142,8 @@ public class AppiumTestSupport {
             int startPoint = (int) (size.height * startPercentage);
             int endPoint = (int) (size.height * endPercentage);
             return new TouchAction(driver)
-                    .press(PointOption.point(startPoint, anchor))
-                    .moveTo(PointOption.point(endPoint, anchor))
+                    .press(PointOption.point(anchor,startPoint))
+                    .moveTo(PointOption.point(anchor,endPoint))
                     .release().perform();
         }
         return null;
@@ -166,9 +166,9 @@ public class AppiumTestSupport {
             int startPoint = (int) (size.height * startPercentage);
             int endPoint = (int) (size.height * endPercentage);
             return new TouchAction(driver)
-                    .press(PointOption.point(startPoint, anchor))
+                    .press(PointOption.point(anchor,startPoint))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
-                    .moveTo(PointOption.point(endPoint, anchor))
+                    .moveTo(PointOption.point(anchor,endPoint))
                     .release().perform();
         }
         return null;
@@ -264,6 +264,24 @@ public class AppiumTestSupport {
                 driver.rotate(ScreenOrientation.PORTRAIT);
                 break;
         }
+    }
+    public static int getScreenWidth(@NotNull AndroidDriver<?> driver){
+        return driver.manage().window().getSize().getWidth();
+    }
+    public static int getScreenHeight(@NotNull AndroidDriver<?> driver){
+        return driver.manage().window().getSize().getHeight();
+    }
+    public static int getElementWidth(@NotNull AndroidElement element){
+        return element.getSize().getWidth();
+    }
+    public static int getElementHeight(@NotNull AndroidElement element){
+        return element.getSize().getHeight();
+    }
+    public static int getElementCenterX(@NotNull AndroidElement element){
+        return element.getCenter().getX();
+    }
+    public static int getElementCenterY(@NotNull AndroidElement element){
+        return element.getCenter().getY();
     }
 
 }
