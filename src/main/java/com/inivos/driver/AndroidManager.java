@@ -1,6 +1,4 @@
 package com.inivos.driver;
-
-
 import com.inivos.config.Constants;
 import com.inivos.enums.MobilePlatform;
 import io.appium.java_client.AppiumDriver;
