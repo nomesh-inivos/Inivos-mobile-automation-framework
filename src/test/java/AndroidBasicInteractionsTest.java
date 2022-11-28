@@ -1,4 +1,7 @@
+import com.inivos.util.AndroidTestSupport;
+import com.inivos.util.AppiumTestSupport;
 import com.inivos.util.BaseTest;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -124,6 +127,10 @@ public class AndroidBasicInteractionsTest extends BaseTest {
 
         // Close the dialog
         closeDialogButton.click();
+    }
+
+    @Test
+    public void test(){
     }
 
 }
