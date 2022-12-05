@@ -5,18 +5,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55f9c6c3-a539-4c76-9ee9-393aa7189aba" name="Changes" comment="Complete javadoc for Appium and Element testsupport">
+      <change afterPath="$PROJECT_DIR$/docs/AndroidBasicInteractionsTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/MobileTestSuite.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/allclasses-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/allclasses.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/allpackages-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/config/Constants.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/config/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/config/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/driver/AndroidManager.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/driver/AppiumDriverFactory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/driver/IosManager.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/driver/MobileDriver.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/driver/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/driver/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/enums/MobilePlatform.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/enums/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/enums/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/util/AppiumTestSupport.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/util/BaseTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/util/ElementTestSupport.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/util/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/com/inivos/util/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/constant-values.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/deprecated-list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/element-list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/help-doc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-10.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-11.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-12.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-13.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-14.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-15.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-16.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-17.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-18.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index-files/index-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery-ui.overrides.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/external/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jquery-3.6.0.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jszip-utils/dist/jszip-utils-ie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jszip-utils/dist/jszip-utils-ie.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jszip-utils/dist/jszip-utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jszip-utils/dist/jszip-utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jszip/dist/jszip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/jquery/jszip/dist/jszip.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/member-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/member-search-index.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/overview-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/overview-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/package-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/package-search-index.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/resources/glass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/resources/x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/type-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/type-search-index.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/config/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AndroidManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AndroidManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/AndroidTestSupport.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/AppiumTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/AppiumTestSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/BaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/ElementTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/ElementTestSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/IosTestSupport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,24 +125,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.30114943",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "terminal",
-    "settings.editor.splitter.proportion": "0.23421589"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.30114943&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.23421589&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\TharinduKanchana\IdeaProjects\Inivos-mobile-automation-framework\src\main\resources" />
@@ -163,6 +225,14 @@
       <option name="presentableId" value="Default" />
       <updated>1668498234443</updated>
     </task>
+    <task id="LOCAL-00001" summary="Complete javadoc for Appium and Element testsupport">
+      <created>1670220095548</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670220095548</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -213,11 +283,6 @@
             </State>
           </value>
         </entry>
-      </map>
-    </option>
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="d32ecc04-5c4d-4053-93bf-ba41f924fe86" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="RECENT_FILTERS">
