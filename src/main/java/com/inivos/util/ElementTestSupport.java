@@ -1,10 +1,8 @@
 package com.inivos.util;
 
 import io.appium.java_client.MobileDriver;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +41,6 @@ public class ElementTestSupport {
         AppiumTestSupport.swipeByPercentageOnElementPerform(driver, rating_bar, 0.001, endPercentage, 0.5, direction, 3000);
     }
 
-
     /**
      * This method performs a search action on filter search bar
      * and returns the search result set as list of android elements
@@ -79,7 +76,7 @@ public class ElementTestSupport {
     public static String Switch(MobileDriver<?> driver, String locator, String method) throws InterruptedException {
         MobileElement switchElement = AppiumTestSupport.locateElement(driver, locator, method);
         AppiumTestSupport.buttonClick(switchElement);
-        return switchElement.getAttribute("checked");
+        return AppiumTestSupport.getElementAttribute(switchElement, "checked");
     }
 
     /**
@@ -94,15 +91,15 @@ public class ElementTestSupport {
     public static String CheckBox(MobileDriver<?> driver, String locator, String method) throws InterruptedException {
         MobileElement checkBox = AppiumTestSupport.locateElement(driver, locator, method);
         AppiumTestSupport.buttonClick(checkBox);
-        return checkBox.getAttribute("checked");
+        return AppiumTestSupport.getElementAttribute(checkBox, "checked");
     }
 
     /**
      * Select element and returns the selected attribute of the element
      *
-     * @param driver
-     * @param locator
-     * @param method
+     * @param driver  - MobileDriver&lt;?&gt; - Android Driver Instance
+     * @param locator - String - Locator String
+     * @param method  - String - Locating method of the element
      * @return Boolean - Selected status of the element
      * @throws InterruptedException
      */
@@ -112,7 +109,15 @@ public class ElementTestSupport {
         return selectElement.isSelected();
     }
 
-    public static String Toast(MobileDriver<?> driver,String locator,String method) throws InterruptedException {
+    /**
+     * Locate and returns the text of a toast
+     * @param driver  - MobileDriver&lt;?&gt; - Android Driver Instance
+     * @param locator - String - Locator String
+     * @param method  - String - Locating method of the Toast element
+     * @return String - Toast text
+     * @throws InterruptedException
+     */
+    public static String Toast(MobileDriver<?> driver, String locator, String method) throws InterruptedException {
         return AppiumTestSupport.getElementText(driver, locator, method);
     }
 }

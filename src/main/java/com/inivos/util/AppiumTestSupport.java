@@ -1,13 +1,11 @@
 package com.inivos.util;
 
 import com.beust.jcommander.ParameterException;
-import com.thoughtworks.qdox.model.expression.And;
 import io.appium.java_client.MobileDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.MultiTouchAction;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.LongPressOptions;
@@ -15,20 +13,20 @@ import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
+import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
 public class AppiumTestSupport {
-
-    private MobileDriver<?> driver;
-    public AppiumTestSupport(MobileDriver<?> driver){
-        this.driver = driver;
-    }
 
     /**
      * <p>This method can locate and return specific android element defined by the method parameters</p>
@@ -47,7 +45,7 @@ public class AppiumTestSupport {
                 try {
                     element = (MobileElement) driver.findElementById(locator);
                     return element;
-                } catch (StaleElementReferenceException e) {
+                } catch (Exception e) {
                     Thread.sleep(5000);
                     return (MobileElement) driver.findElementById(locator);
                 }
@@ -55,7 +53,7 @@ public class AppiumTestSupport {
                 try {
                     element = (MobileElement) driver.findElementByAccessibilityId(locator);
                     return element;
-                } catch (StaleElementReferenceException e) {
+                } catch (Exception e) {
                     Thread.sleep(5000);
                     return (MobileElement) driver.findElementByAccessibilityId(locator);
                 }
@@ -63,7 +61,7 @@ public class AppiumTestSupport {
                 try {
                     element = (MobileElement) driver.findElementByXPath(locator);
                     return element;
-                } catch (StaleElementReferenceException e) {
+                } catch (Exception e) {
                     Thread.sleep(5000);
                     return (MobileElement) driver.findElementByXPath(locator);
                 }
@@ -71,7 +69,7 @@ public class AppiumTestSupport {
                 try {
                     element = (MobileElement) driver.findElementByClassName(locator);
                     return element;
-                } catch (StaleElementReferenceException e) {
+                } catch (Exception e) {
                     Thread.sleep(5000);
                     return (MobileElement) driver.findElementByClassName(locator);
                 }
@@ -208,7 +206,8 @@ public class AppiumTestSupport {
      * @param waitOfMillis - long - Swiping time in milliseconds (long)
      */
     public static void swipeByCoordinatePerform(MobileDriver<?> driver, Point startPoint, Point endPoint, long waitOfMillis) {
-        new TouchAction<>(driver).press(PointOption.point(startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitOfMillis)))
+        new TouchAction<>(driver).press(PointOption.point(startPoint))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitOfMillis)))
                 .moveTo(PointOption.point(endPoint)).release().perform();
     }
 
@@ -229,18 +228,14 @@ public class AppiumTestSupport {
             int anchor = (int) (size.height * anchorPercentage);
             int startPoint = (int) (size.width * startPercentage);
             int endPoint = (int) (size.width * endPercentage);
-            return new TouchAction(driver)
-                    .press(PointOption.point(startPoint, anchor))
-                    .moveTo(PointOption.point(endPoint, anchor))
-                    .release();
+            return new TouchAction(driver).press(PointOption.point(startPoint, anchor))
+                    .moveTo(PointOption.point(endPoint, anchor)).release();
         } else if (direction.equalsIgnoreCase("Vertical")) {
             int anchor = (int) (size.width * anchorPercentage);
             int startPoint = (int) (size.height * startPercentage);
             int endPoint = (int) (size.height * endPercentage);
-            return new TouchAction(driver)
-                    .press(PointOption.point(anchor, startPoint))
-                    .moveTo(PointOption.point(anchor, endPoint))
-                    .release();
+            return new TouchAction(driver).press(PointOption.point(anchor, startPoint))
+                    .moveTo(PointOption.point(anchor, endPoint)).release();
         }
         return null;
     }
@@ -263,23 +258,19 @@ public class AppiumTestSupport {
             int anchor = (int) (size.height * anchorPercentage);
             int startPoint = (int) (size.width * startPercentage);
             int endPoint = (int) (size.width * endPercentage);
-            return new TouchAction(driver)
-                    .press(PointOption.point(startPoint, anchor))
+            return new TouchAction(driver).press(PointOption.point(startPoint, anchor))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
-                    .moveTo(PointOption.point(endPoint, anchor))
-                    .release();
+                    .moveTo(PointOption.point(endPoint, anchor)).release();
         } else if (direction.equalsIgnoreCase("Vertical")) {
             int anchor = (int) (size.width * anchorPercentage);
             int startPoint = (int) (size.height * startPercentage);
             int endPoint = (int) (size.height * endPercentage);
-            return new TouchAction(driver)
-                    .press(PointOption.point(anchor, startPoint))
-                    .moveTo(PointOption.point(anchor, endPoint))
-                    .release();
+            return new TouchAction(driver).press(PointOption.point(startPoint, anchor))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
+                    .moveTo(PointOption.point(endPoint, anchor)).release();
         }
         return null;
     }
-
 
     /**
      * This method performs a swiping action specified by Start Percentage,End Percentage, Anchor Percentage and Swiping Direction.
@@ -298,20 +289,16 @@ public class AppiumTestSupport {
             int anchor = (int) (size.height * anchorPercentage);
             int startPoint = (int) (size.width * startPercentage);
             int endPoint = (int) (size.width * endPercentage);
-            new TouchAction(driver)
-                    .press(PointOption.point(startPoint, anchor))
+            new TouchAction(driver).press(PointOption.point(startPoint, anchor))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
-                    .moveTo(PointOption.point(endPoint, anchor))
-                    .release().perform();
+                    .moveTo(PointOption.point(endPoint, anchor)).release().perform();
         } else if (direction.equalsIgnoreCase("Vertical")) {
             int anchor = (int) (size.width * anchorPercentage);
             int startPoint = (int) (size.height * startPercentage);
             int endPoint = (int) (size.height * endPercentage);
-            new TouchAction(driver)
-                    .press(PointOption.point(anchor, startPoint))
+            new TouchAction(driver).press(PointOption.point(anchor, startPoint))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
-                    .moveTo(PointOption.point(anchor, endPoint))
-                    .release().perform();
+                    .moveTo(PointOption.point(anchor, endPoint)).release().perform();
         }
     }
 
@@ -328,26 +315,21 @@ public class AppiumTestSupport {
      * @param waitMillis       - long - Swiping time duration
      */
     public static void swipeByPercentageOnElementPerform(@NotNull MobileDriver<?> driver, MobileElement element, double startPercentage, double endPercentage, double anchorPercentage, @NotNull String direction, long waitMillis) {
-        Dimension size = driver.manage().window().getSize();
 
         if (direction.equalsIgnoreCase("Horizontal")) {
             Point StartPoint = AppiumTestSupport.getCoordinateOnElementPerc(element, startPercentage, anchorPercentage);
             Point EndPoint = AppiumTestSupport.getCoordinateOnElementPerc(element, endPercentage, anchorPercentage);
 
-            new TouchAction(driver)
-                    .press(PointOption.point(StartPoint))
+            new TouchAction(driver).press(PointOption.point(StartPoint))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
-                    .moveTo(PointOption.point(EndPoint))
-                    .release().perform();
+                    .moveTo(PointOption.point(EndPoint)).release().perform();
         } else if (direction.equalsIgnoreCase("Vertical")) {
             Point StartPoint = AppiumTestSupport.getCoordinateOnElementPerc(element, anchorPercentage, startPercentage);
             Point EndPoint = AppiumTestSupport.getCoordinateOnElementPerc(element, anchorPercentage, endPercentage);
 
-            new TouchAction(driver)
-                    .press(PointOption.point(StartPoint))
+            new TouchAction(driver).press(PointOption.point(StartPoint))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
-                    .moveTo(PointOption.point(EndPoint))
-                    .release().perform();
+                    .moveTo(PointOption.point(EndPoint)).release().perform();
         }
     }
 
@@ -365,26 +347,22 @@ public class AppiumTestSupport {
      * @return TouchAction() - Swiping touch Action
      */
     public static @Nullable TouchAction swipeByPercentageOnElement(@NotNull MobileDriver<?> driver, MobileElement element, double startPercentage, double endPercentage, double anchorPercentage, @NotNull String direction, long waitMillis) {
-        Dimension size = driver.manage().window().getSize();
+
 
         if (direction.equalsIgnoreCase("Horizontal")) {
             Point StartPoint = AppiumTestSupport.getCoordinateOnElementPerc(element, startPercentage, anchorPercentage);
             Point EndPoint = AppiumTestSupport.getCoordinateOnElementPerc(element, endPercentage, anchorPercentage);
 
-            return new TouchAction(driver)
-                    .press(PointOption.point(StartPoint))
+            return new TouchAction(driver).press(PointOption.point(StartPoint))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
-                    .moveTo(PointOption.point(EndPoint))
-                    .release();
+                    .moveTo(PointOption.point(EndPoint)).release();
         } else if (direction.equalsIgnoreCase("Vertical")) {
             Point StartPoint = AppiumTestSupport.getCoordinateOnElementPerc(element, anchorPercentage, startPercentage);
             Point EndPoint = AppiumTestSupport.getCoordinateOnElementPerc(element, anchorPercentage, endPercentage);
 
-            return new TouchAction(driver)
-                    .press(PointOption.point(StartPoint))
+            return new TouchAction(driver).press(PointOption.point(StartPoint))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis)))
-                    .moveTo(PointOption.point(EndPoint))
-                    .release();
+                    .moveTo(PointOption.point(EndPoint)).release();
         }
         return null;
     }
@@ -401,11 +379,9 @@ public class AppiumTestSupport {
         int startY = startElement.getLocation().getY() + (startElement.getSize().getHeight() / 2);
         int endX = endElement.getLocation().getX() + (endElement.getSize().getWidth() / 2);
         int endY = endElement.getLocation().getY() + (endElement.getSize().getHeight() / 2);
-        new TouchAction(driver)
-                .press(PointOption.point(startX, startY))
+        new TouchAction(driver).press(PointOption.point(startX, startY))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(endX, endY))
-                .release().perform();
+                .moveTo(PointOption.point(endX, endY)).release().perform();
     }
 
     /**
@@ -421,11 +397,9 @@ public class AppiumTestSupport {
         int startY = startElement.getLocation().getY() + (startElement.getSize().getHeight() / 2);
         int endX = endElement.getLocation().getX() + (endElement.getSize().getWidth() / 2);
         int endY = endElement.getLocation().getY() + (endElement.getSize().getHeight() / 2);
-        return new TouchAction(driver)
-                .press(PointOption.point(startX, startY))
+        return new TouchAction(driver).press(PointOption.point(startX, startY))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(endX, endY))
-                .release();
+                .moveTo(PointOption.point(endX, endY)).release();
     }
 
     /**
@@ -452,8 +426,8 @@ public class AppiumTestSupport {
         MobileElement dot1 = AppiumTestSupport.locateElement(driver, dragLocator, dragLocatingMethod);
         MobileElement dot2 = AppiumTestSupport.locateElement(driver, dropLocator, dropLocatingMethod);
 
-        new TouchAction<>(driver)
-                .longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(dot1)))
+        new TouchAction<>(driver).longPress(LongPressOptions.longPressOptions()
+                        .withElement(ElementOption.element(dot1)))
                 .moveTo(PointOption.point(dot2.getCenter().getX(), dot2.getCenter().getY()))
                 .release().perform();
     }
@@ -466,8 +440,8 @@ public class AppiumTestSupport {
      * @param dropElement - MobileElement - Drop element
      */
     public static void dragNDrop(MobileDriver<?> driver, MobileElement dragElement, MobileElement dropElement) {
-        new TouchAction<>(driver)
-                .longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(dragElement)))
+        new TouchAction<>(driver).longPress(LongPressOptions.longPressOptions()
+                        .withElement(ElementOption.element(dragElement)))
                 .moveTo(PointOption.point(dropElement.getCenter().getX(), dropElement.getCenter().getY()))
                 .release().perform();
     }
@@ -512,8 +486,7 @@ public class AppiumTestSupport {
      * @return TouchAction - Tap action
      */
     public static TouchAction tapOnElement(MobileDriver<?> driver, MobileElement element) {
-        return new TouchAction<>(driver)
-                .tap(TapOptions.tapOptions().withElement(ElementOption.element(element)));
+        return new TouchAction<>(driver).tap(TapOptions.tapOptions().withElement(ElementOption.element(element)));
     }
 
     /**
@@ -524,8 +497,8 @@ public class AppiumTestSupport {
      * @param waitMillis - long - tapping time duration
      */
     public static void tapOnElementPerform(MobileDriver<?> driver, MobileElement element, long waitMillis) {
-        new TouchAction<>(driver)
-                .tap(TapOptions.tapOptions().withElement(ElementOption.element(element)))
+        new TouchAction<>(driver).tap(TapOptions.tapOptions()
+                        .withElement(ElementOption.element(element)))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(waitMillis))).perform();
     }
 
@@ -537,8 +510,7 @@ public class AppiumTestSupport {
      * @return TouchAction()
      */
     public static TouchAction pressOnCoordinate(MobileDriver<?> driver, @NotNull Point press) {
-        return new TouchAction<>(driver)
-                .press(PointOption.point(press)).release();
+        return new TouchAction<>(driver).press(PointOption.point(press)).release();
     }
 
     /**
@@ -548,8 +520,7 @@ public class AppiumTestSupport {
      * @param press  - Point() - Coordinate to press on
      */
     public static void pressOnCoordinatePerform(MobileDriver<?> driver, @NotNull Point press) {
-        new TouchAction<>(driver)
-                .press(PointOption.point(press)).release().perform();
+        new TouchAction<>(driver).press(PointOption.point(press)).release().perform();
     }
 
     /**
@@ -560,8 +531,7 @@ public class AppiumTestSupport {
      * @return TouchAction - Press action
      */
     public static TouchAction pressOnElement(MobileDriver<?> driver, @NotNull MobileElement element) {
-        return new TouchAction<>(driver)
-                .press(PointOption.point(element.getCenter().x, element.getCenter().y)).release();
+        return new TouchAction<>(driver).press(PointOption.point(element.getCenter().x, element.getCenter().y)).release();
     }
 
     /**
@@ -571,8 +541,7 @@ public class AppiumTestSupport {
      * @param element - MobileElement - Element to Press on
      */
     public static void pressOnElementPerform(MobileDriver<?> driver, @NotNull MobileElement element) {
-        new TouchAction<>(driver)
-                .press(PointOption.point(element.getCenter().x, element.getCenter().y)).release().perform();
+        new TouchAction<>(driver).press(PointOption.point(element.getCenter().x, element.getCenter().y)).release().perform();
     }
 
     /**
@@ -582,8 +551,8 @@ public class AppiumTestSupport {
      * @param element - MobileElement - Element to Press on
      */
     public static void longPressOnElementPerform(MobileDriver<?> driver, @NotNull MobileElement element) {
-        new TouchAction<>(driver)
-                .longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element))).perform();
+        new TouchAction<>(driver).longPress(LongPressOptions.longPressOptions()
+                .withElement(ElementOption.element(element))).perform();
     }
 
     /**
@@ -594,8 +563,8 @@ public class AppiumTestSupport {
      * @return TouchAction - LongPress action
      */
     public static TouchAction longPressOnElement(MobileDriver<?> driver, @NotNull MobileElement element) {
-        return new TouchAction<>(driver)
-                .longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element)));
+        return new TouchAction<>(driver).longPress(LongPressOptions.longPressOptions()
+                .withElement(ElementOption.element(element)));
     }
 
     /**
@@ -610,6 +579,7 @@ public class AppiumTestSupport {
 
     /**
      * Press the back button on Android
+     *
      * @param driver - AndroidDriver&lt;?&gt; - Android Driver Instance
      */
     public static void pressBackButtonAndroid(@NotNull AndroidDriver<?> driver) {
@@ -663,11 +633,11 @@ public class AppiumTestSupport {
      * @throws InterruptedException
      */
     public static void sendTextInput(@NotNull MobileDriver<?> driver, String locator, String method, String text) throws InterruptedException {
-        locateElement(driver, locator, method).sendKeys(text);
+        sendTextInput(locateElement(driver, locator, method), text);
     }
 
     /**
-     * Returns Text of an given element
+     * Returns Text of a given element
      *
      * @param element - MobileElement
      * @return String - Extracted text
@@ -683,7 +653,7 @@ public class AppiumTestSupport {
     }
 
     /**
-     * Returns text of an located element
+     * Returns text of a located element
      *
      * @param driver  - MobileDriver&lt;?&gt; - Mobile Driver Instance
      * @param locator - String - Locator
@@ -709,6 +679,16 @@ public class AppiumTestSupport {
      */
     public static String getCurrentActivity(@NotNull AndroidDriver<?> driver) {
         return driver.currentActivity();
+    }
+
+    /**
+     * Returns the current app package, Driver instance should be android.
+     *
+     * @param driver
+     * @return
+     */
+    public static String getCurrentPackage(@NotNull AndroidDriver<?> driver) {
+        return driver.getCurrentPackage();
     }
 
     /**
@@ -822,6 +802,17 @@ public class AppiumTestSupport {
     }
 
     /**
+     * Return specific attribute value of given element through parameters
+     *
+     * @param element   - MobileElement
+     * @param attribute - String - Attribute name
+     * @return - String - Attribute current value
+     */
+    public static String getElementAttribute(MobileElement element, String attribute) {
+        return element.getAttribute(attribute);
+    }
+
+    /**
      * Return set of available Context handles to automate
      *
      * @param driver - MobileDriver&lt;?&gt; - Mobile Driver Instance
@@ -829,5 +820,60 @@ public class AppiumTestSupport {
      */
     public static Set<String> getAllAvailableContexts(MobileDriver<?> driver) {
         return driver.getContextHandles();
+    }
+
+    /**
+     * Take Screenshot of the test screen at the moment.
+     *
+     * @param driver         - MobileDriver&lt;?&gt; - Mobile Driver Instance
+     * @param outputLocation - Output location path with filename
+     * @throws IOException
+     */
+    public static void getScreenshot(MobileDriver<?> driver, String outputLocation) throws IOException {
+        System.out.println("Capturing the snapshot of the page ");
+        File srcFiler = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(srcFiler, new File(outputLocation));
+    }
+
+    /**
+     * Close the current app
+     *
+     * @param driver - MobileDriver&lt;?&gt; - Mobile Driver Instance
+     */
+    public static void closeApp(MobileDriver driver) {
+        driver.closeApp();
+    }
+
+    /**
+     * Reopens the app without resetting data
+     *
+     * @param driver  - MobileDriver&lt;?&gt; - Mobile Driver Instance
+     * @param Package - App package or bundleId
+     */
+    public static void activateApp(MobileDriver<?> driver, String Package) {
+        driver.activateApp(Package);
+    }
+
+    /**
+     * Returns App Page elements as xml source
+     *
+     * @param driver - MobileDriver&lt;?&gt; - Mobile Driver Instance
+     * @return String - App source xml
+     */
+    public static String getPageSource(MobileDriver<?> driver) {
+        return driver.getPageSource();
+    }
+
+    /**
+     * Performs wait action until expected element is visible and returns it
+     *
+     * @param driver        - MobileDriver&lt;?&gt; - Mobile Driver Instance
+     * @param waitInSeconds - long - Explicit wait time in seconds
+     * @param locator       - By - Locator to the element (Can't use Accessibility ID as locating method)
+     * @return MobileElement - Expected element
+     */
+    public static MobileElement waitUntilVisibilityOfElement(MobileDriver<?> driver, long waitInSeconds, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, waitInSeconds);
+        return (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }

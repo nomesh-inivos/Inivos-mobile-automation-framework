@@ -1,8 +1,6 @@
 package com.inivos.driver;
 
 import com.inivos.enums.MobilePlatform;
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import io.appium.java_client.AppiumDriver;
@@ -16,7 +14,7 @@ public class AppiumDriverFactory {
     public static AppiumDriver<?> getDriver(String platform){
         System.out.println(MobilePlatform.ANDROID.name().equalsIgnoreCase(platform));
         LOGGER.debug("loading the AppiumDriverFactory getDriver.. platform is: >>>>>>>", platform);
-        if(platform.equals(MobilePlatform.ANDROID.name())){
+        if(platform.equalsIgnoreCase(MobilePlatform.ANDROID.name())){
             mobileDriver = AndroidManager.getDriver();
         }else{
             mobileDriver = IosManager.getDriver();

@@ -1,21 +1,19 @@
-import com.inivos.config.Constants;
-import com.inivos.util.BaseTest;
-import org.testng.annotations.*;
-
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.remote.DesiredCapabilities;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-
+import com.inivos.config.Constants;
+import com.inivos.util.BaseTest;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.*;
 import org.testng.log4testng.Logger;
+
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class MobileTestSuite extends BaseTest {
 
@@ -26,6 +24,7 @@ public class MobileTestSuite extends BaseTest {
 
     // Initiating Appium Driver
     public static AndroidDriver<?> driver;
+
     /*
      * This method is used for initializing the Log4j and Config.properties
      */
@@ -79,21 +78,21 @@ public class MobileTestSuite extends BaseTest {
             // All Capability values are retrieved from Config.properties file.
             cap.setCapability(MobileCapabilityType.PLATFORM_NAME, Constants.PLATFORM);
             cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, Constants.ANDROID_PLATFORM_VERSION);
-            cap.setCapability(MobileCapabilityType.DEVICE_NAME, Constants.ANDROID_DEVICE_NAME);
-            cap.setCapability("appActivity", Constants.APP_ACTIVITY);
-            cap.setCapability("appPackage", Constants.APP_PACKAGE);
-            cap.setCapability("autoLaunch", true);
+            //cap.setCapability(MobileCapabilityType.DEVICE_NAME, Constants.ANDROID_DEVICE_NAME);
+            cap.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, Constants.APP_ACTIVITY);
+            cap.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, Constants.APP_PACKAGE);
+            cap.setCapability(AndroidMobileCapabilityType.AUTO_LAUNCH, true);
             cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 500);
             cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
-            cap.setCapability("avd","Pixel_2_API_30");
+            cap.setCapability(AndroidMobileCapabilityType.AVD, "Pixel_2_API_30");
             // Declaring the driver as "Android driver" with the Host and Port number to communicate with Appium desktop
             driver = new AndroidDriver<AndroidElement>(new URL(Constants.APPIUM_URL), cap);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             //Printing the driver details in Log file
-            log.info("Driver declared successfully : " +driver);
+            log.info("Driver declared successfully : " + driver);
         } catch (Exception e) {
             driver = null;
-            log.fatal("Driver declaration failed : " +driver);
+            log.fatal("Driver declaration failed : " + driver);
             log.fatal(e.getStackTrace());
         }
         //Returning the instance of the driver to the parent method
@@ -105,12 +104,18 @@ public class MobileTestSuite extends BaseTest {
         //startTest();
         log.info("Test case started successfully");
         log.info("Trying to launch the Application under Test");
-        try{
+        try {
             driver.launchApp();
             log.info("Application launched successfully");
-        }catch(Exception e) {
-            log.info("Unable to launch the application :" +e.getMessage());
+        } catch (Exception e) {
+            log.info("Unable to launch the application :" + e.getMessage());
         }
+    }
+
+    @Test
+    public void test() {
+        System.out.println("in Test");
+        System.out.println(driver.getCapabilities().is(MobileCapabilityType.DEVICE_NAME));
     }
 
     @AfterClass

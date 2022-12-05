@@ -1,9 +1,8 @@
-import com.inivos.util.AndroidTestSupport;
-import com.inivos.util.AppiumTestSupport;
 import com.inivos.util.BaseTest;
-import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.android.Activity;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,20 +10,16 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import io.appium.java_client.android.Activity;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.*;
-
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class AndroidBasicInteractionsTest extends BaseTest {
-    private AndroidDriver<WebElement> driver;
     private final String SEARCH_ACTIVITY = ".app.SearchInvoke";
     private final String ALERT_DIALOG_ACTIVITY = ".app.AlertDialogSamples";
     private final String PACKAGE = "io.appium.android.apis";
+    private AndroidDriver<AndroidElement> driver;
 
     @BeforeClass
     public void setUp() throws IOException {
@@ -84,14 +79,14 @@ public class AndroidBasicInteractionsTest extends BaseTest {
         if you have more questions.
         */
 
-        driver = new AndroidDriver<WebElement>(getServiceUrl(), capabilities);
+        driver = new AndroidDriver<>(getServiceUrl(), capabilities);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterClass
     public void tearDown() {
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
         }
     }
 
@@ -99,9 +94,9 @@ public class AndroidBasicInteractionsTest extends BaseTest {
     @Test()
     public void testSendKeys() {
         driver.startActivity(new Activity(PACKAGE, SEARCH_ACTIVITY));
-        AndroidElement searchBoxEl = (AndroidElement) driver.findElementById("txt_query_prefill");
+        AndroidElement searchBoxEl = driver.findElementById("txt_query_prefill");
         searchBoxEl.sendKeys("Hello world!");
-        AndroidElement onSearchRequestedBtn = (AndroidElement) driver.findElementById("btn_start_search");
+        AndroidElement onSearchRequestedBtn = driver.findElementById("btn_start_search");
         onSearchRequestedBtn.click();
         AndroidElement searchText = (AndroidElement) new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("android:id/search_src_text")));
@@ -116,21 +111,21 @@ public class AndroidBasicInteractionsTest extends BaseTest {
         driver.startActivity(new Activity(PACKAGE, ALERT_DIALOG_ACTIVITY));
 
         // Click button that opens a dialog
-        AndroidElement openDialogButton = (AndroidElement) driver.findElementById("io.appium.android.apis:id/two_buttons");
+        AndroidElement openDialogButton = driver.findElementById("io.appium.android.apis:id/two_buttons");
         openDialogButton.click();
 
         // Check that the dialog is there
-        AndroidElement alertElement = (AndroidElement) driver.findElementById("android:id/alertTitle");
+        AndroidElement alertElement = driver.findElementById("android:id/alertTitle");
         String alertText = alertElement.getText();
         Assert.assertEquals(alertText, "Lorem ipsum dolor sit aie consectetur adipiscing\nPlloaso mako nuto siwuf cakso dodtos anr koop.");
-        AndroidElement closeDialogButton = (AndroidElement) driver.findElementById("android:id/button1");
+        AndroidElement closeDialogButton = driver.findElementById("android:id/button1");
 
         // Close the dialog
         closeDialogButton.click();
     }
 
     @Test
-    public void test(){
+    public void test() {
     }
 
 }

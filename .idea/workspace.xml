@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55f9c6c3-a539-4c76-9ee9-393aa7189aba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/AndroidTestSupport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/IosTestSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="55f9c6c3-a539-4c76-9ee9-393aa7189aba" name="Changes" comment="Complete javadoc for Appium and Element testsupport">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/config/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AndroidManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AndroidManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/driver/AppiumDriverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/AndroidTestSupport.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/AppiumTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/AppiumTestSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/BaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/ElementTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inivos/util/ElementTestSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inivos/util/IosTestSupport.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AndroidBasicInteractionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MobileTestSuite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,25 +63,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.30114943&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.23421589&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.30114943",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "terminal",
+    "settings.editor.splitter.proportion": "0.23421589"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\TharinduKanchana\IdeaProjects\Inivos-mobile-automation-framework\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG./Users/nomeshd/POC Projects/UNICENTA/Inivos-mobile-automation-framework/testng.xml">
+  <component name="RunManager" selected="TestNG.MobileTestSuite.test">
     <configuration name="MobileTestSuite" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Inivos-mobile-automation-framework" />
       <option name="PACKAGE_NAME" value="" />
@@ -89,11 +98,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MobileTestSuite.testAutoCompleteScreenTop" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="MobileTestSuite.test" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Inivos-mobile-automation-framework" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MobileTestSuite" />
-      <option name="METHOD_NAME" value="testAutoCompleteScreenTop" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -101,11 +110,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MobileTestSuite.textTests" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="MobileTestSuite.testAutoCompleteScreenTop" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Inivos-mobile-automation-framework" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MobileTestSuite" />
-      <option name="METHOD_NAME" value="textTests" />
+      <option name="METHOD_NAME" value="testAutoCompleteScreenTop" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -137,11 +146,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.MobileTestSuite.test" />
         <item itemvalue="TestNG./Users/nomeshd/POC Projects/UNICENTA/Inivos-mobile-automation-framework/testng.xml" />
         <item itemvalue="TestNG.ViewTests.testImageSwitcher" />
         <item itemvalue="TestNG.MobileTestSuite.testAutoCompleteScreenTop" />
         <item itemvalue="TestNG.MobileTestSuite" />
-        <item itemvalue="TestNG.MobileTestSuite.textTests" />
       </list>
     </recent_temporary>
   </component>
@@ -155,6 +164,17 @@
       <updated>1668498234443</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -215,6 +235,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Complete javadoc for Appium and Element testsupport" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete javadoc for Appium and Element testsupport" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
